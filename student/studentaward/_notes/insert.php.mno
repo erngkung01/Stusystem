@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_prefix" value="name:PrefixCode;datatype:3,name:PrefixName;datatype:253" />
+	<infoitem key="UD_studentdata" value="name:studentID;datatype:253,name:student_name;datatype:253,name:student_surname;datatype:253" />
+	<infoitem key="UD_academicYear" value="name:AcademicYearsID;datatype:3,name:AcademicYears;datatype:3" />
+	<infoitem key="UD_Semester" value="name:SemesterID;datatype:3,name:Semester;datatype:253" />
+	<infoitem key="UD_Recordset1" value="name:AwardTypeID;datatype:3,name:AwardTypeName;datatype:253" />
+	<infoitem key="UD_Awardtype" value="name:AwardTypeID;datatype:3,name:AwardTypeName;datatype:253" />
+</info>

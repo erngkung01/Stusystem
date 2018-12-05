@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_prefix" value="name:PrefixCode;datatype:3,name:PrefixName;datatype:253" />
+	<infoitem key="UD_Gender" value="name:GenderCode;datatype:3,name:GenderName;datatype:253" />
+	<infoitem key="UD_Position" value="name:PositionID;datatype:3,name:Positionname;datatype:253" />
+</info>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Prefix" value="name:PrefixCode;datatype:3,name:PrefixName;datatype:253" />
+	<infoitem key="UD_gender" value="name:GenderCode;datatype:3,name:GenderName;datatype:253" />
+	<infoitem key="UD_blger" value="name:blgerid;datatype:3,name:blgerName;datatype:253" />
+	<infoitem key="UD_religion" value="name:Religionid;datatype:3,name:Religionname;datatype:253" />
+	<infoitem key="UD_group" value="name:groupid;datatype:253,name:group_name;datatype:253,name:TeacherID;datatype:253" />
+	<infoitem key="UD_studentstatus" value="name:statusid;datatype:3,name:Statusname;datatype:253" />
+</info>

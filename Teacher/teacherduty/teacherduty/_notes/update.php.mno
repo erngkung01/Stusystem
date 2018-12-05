@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_teacherID" value="name:TeacherID;datatype:253,name:PersonID;datatype:253,name:PrefixCode;datatype:3,name:name;datatype:253,name:surname;datatype:253,name:Teacher_img;datatype:253,name:GenderCode;datatype:3,name:tel;datatype:253,name:email;datatype:253" />
+	<infoitem key="UD_academicyear" value="name:AcademicYearsID;datatype:3,name:AcademicYears;datatype:3" />
+	<infoitem key="UD_dutyyear" value="name:dutyyearID;datatype:3,name:AcademicYearsID;datatype:3,name:TeacherID;datatype:253,name:AcademicYearsID;datatype:3,name:AcademicYears;datatype:3" />
+	<infoitem key="UD_duty" value="name:dutyID;datatype:3,name:dutyyearID;datatype:3,name:TeacherID;datatype:253,name:dutyname;datatype:253" />
+</info>

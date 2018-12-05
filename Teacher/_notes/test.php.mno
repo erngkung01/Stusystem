@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_prefix" value="name:PrefixCode;datatype:3,name:PrefixName;datatype:253" />
+	<infoitem key="UD_Gender" value="name:GenderCode;datatype:3,name:GenderName;datatype:253" />
+	<infoitem key="UD_Recordset1" value="name:TeacherID;datatype:253,name:PersonID;datatype:253,name:PrefixCode;datatype:3,name:Teacher_name;datatype:253,name:Teacher_surname;datatype:253,name:Teacher_img;datatype:253,name:GenderCode;datatype:3,name:Teacher_tel;datatype:253,name:Teacher_email;datatype:253" />
+	<infoitem key="UD_Teacher" value="name:TeacherID;datatype:253,name:PersonID;datatype:253,name:PrefixCode;datatype:3,name:Teacher_name;datatype:253,name:Teacher_surname;datatype:253,name:Teacher_img;datatype:253,name:GenderCode;datatype:3,name:Teacher_tel;datatype:253,name:Teacher_email;datatype:253" />
+</info>

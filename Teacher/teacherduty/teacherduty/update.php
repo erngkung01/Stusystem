@@ -1,0 +1,231 @@
+<?php require_once('../../../Connections/stusystem.php'); ?>
+<?php define("dwtuploadfolder","images");
+ //example dwUpload($_FILES["input_name"]);
+include("../../teacheraward/dw-upload.inc.php");?>
+<?php
+if (!isset($_SESSION)) {
+  session_start();
+}
+$MM_authorizedUsers = "111,222,333";
+$MM_donotCheckaccess = "false";
+
+// *** Restrict Access To Page: Grant or deny access to this page
+function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
+  // For security, start by assuming the visitor is NOT authorized. 
+  $isValid = False; 
+
+  // When a visitor has logged into this site, the Session variable MM_Username set equal to their username. 
+  // Therefore, we know that a user is NOT logged in if that Session variable is blank. 
+  if (!empty($UserName)) { 
+    // Besides being logged in, you may restrict access to only certain users based on an ID established when they login. 
+    // Parse the strings into arrays. 
+    $arrUsers = Explode(",", $strUsers); 
+    $arrGroups = Explode(",", $strGroups); 
+    if (in_array($UserName, $arrUsers)) { 
+      $isValid = true; 
+    } 
+    // Or, you may restrict access to only certain users based on their username. 
+    if (in_array($UserGroup, $arrGroups)) { 
+      $isValid = true; 
+    } 
+    if (($strUsers == "") && false) { 
+      $isValid = true; 
+    } 
+  } 
+  return $isValid; 
+}
+
+$MM_restrictGoTo = "../../../index.php";
+if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
+  $MM_qsChar = "?";
+  $MM_referrer = $_SERVER['PHP_SELF'];
+  if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
+  if (isset($_SERVER['QUERY_STRING']) && strlen($_SERVER['QUERY_STRING']) > 0) 
+  $MM_referrer .= "?" . $_SERVER['QUERY_STRING'];
+  $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
+  header("Location: ". $MM_restrictGoTo); 
+  exit;
+}
+?>
+<?php
+if (!function_exists("GetSQLValueString")) {
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+global $stusystem;
+  if (PHP_VERSION < 6) {
+    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+  }
+
+  $theValue = function_exists("mysqli_real_escape_string") ? mysqli_real_escape_string($stusystem, $theValue) : mysqli_escape_string($stusystem, $theValue);
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+      break;
+      case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "password":
+    $theValue = ($theValue != "") ? "'" . md5($theValue) . "'" : "NULL";
+    break; 
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+}
+
+$editFormAction = $_SERVER['PHP_SELF'];
+if (isset($_SERVER['QUERY_STRING'])) {
+  $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
+}
+
+if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "insertstudentparent")) {
+  $updateSQL = sprintf("UPDATE tbl_duty SET dutyyearID=%s, TeacherID=%s, dutyname=%s WHERE dutyID=%s",
+                       GetSQLValueString($_POST['dutyyearID'], "int"),
+                       GetSQLValueString($_POST['TeacherID'], "text"),
+                       GetSQLValueString($_POST['dutyname'], "text"),
+                       GetSQLValueString($_POST['dutyID'], "int"));
+
+  //mysql_select_db($database_stusystem, $stusystem);
+  $Result1 = mysqli_query($stusystem, $updateSQL) or die(mysqli_error($stusystem));
+
+  $updateGoTo = "index.php";
+  if (isset($_SERVER['QUERY_STRING'])) {
+    $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
+    $updateGoTo .= $_SERVER['QUERY_STRING'];
+  }
+  header(sprintf("Location: %s", $updateGoTo));
+}
+
+$colname_teacherID = "-1";
+if (isset($_GET['TeacherID'])) {
+  $colname_teacherID = $_GET['TeacherID'];
+}
+//42320819($database_stusystem, $stusystem);
+$query_teacherID = sprintf("SELECT * FROM tbl_teacher WHERE TeacherID = %s", GetSQLValueString($colname_teacherID, "text"));
+$teacherID = mysqli_query($stusystem, $query_teacherID) or die(mysqli_error($stusystem));
+$row_teacherID = mysqli_fetch_assoc($teacherID);
+$totalRows_teacherID = mysqli_num_rows($teacherID);
+
+//42320819($database_stusystem, $stusystem);
+$query_academicyear = "SELECT * FROM tbl_academicyears";
+$academicyear = mysqli_query($stusystem, $query_academicyear) or die(mysqli_error($stusystem));
+$row_academicyear = mysqli_fetch_assoc($academicyear);
+$totalRows_academicyear = mysqli_num_rows($academicyear);
+
+$colname_dutyyear = "-1";
+if (isset($_GET['dutyyearID'])) {
+  $colname_dutyyear = $_GET['dutyyearID'];
+}
+//42320819($database_stusystem, $stusystem);
+$query_dutyyear = sprintf("SELECT a.*,b.* FROM tbl_dutyyear as a, tbl_academicyears as b WHERE a.dutyyearID = %s and a.AcademicYearsID=b.AcademicYearsID", GetSQLValueString($colname_dutyyear, "int"));
+$dutyyear = mysqli_query($stusystem, $query_dutyyear) or die(mysqli_error($stusystem));
+$row_dutyyear = mysqli_fetch_assoc($dutyyear);
+$totalRows_dutyyear = mysqli_num_rows($dutyyear);
+
+$colname_duty = "-1";
+if (isset($_GET['dutyID'])) {
+  $colname_duty = $_GET['dutyID'];
+}
+//42320819($database_stusystem, $stusystem);
+$query_duty = sprintf("SELECT * FROM tbl_duty WHERE dutyID = %s", GetSQLValueString($colname_duty, "int"));
+$duty = mysqli_query($stusystem, $query_duty) or die(mysqli_error($stusystem));
+$row_duty = mysqli_fetch_assoc($duty);
+$totalRows_duty = mysqli_num_rows($duty);
+
+$colname_teacheraward = "-1";
+if (isset($_GET['TeacherID'])) {
+  $colname_teacheraward = $_GET['TeacherID'];
+}
+//42320819($database_stusystem, $stusystem);
+$query_teacheraward = sprintf("SELECT * FROM tbl_teacher WHERE TeacherID = %s", GetSQLValueString($colname_teacheraward, "text"));
+$teacheraward = mysqli_query($stusystem, $query_teacheraward) or die(mysqli_error($stusystem));
+$row_teacheraward = mysqli_fetch_assoc($teacheraward);
+?>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ปรับปรุงข้อมูลหน้าที่อาจารย์</title>
+<link href="../../../css/bootstrap.css" rel="stylesheet" type="text/css">
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script src="../../../dist/js/bootstrap.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-1.10.2.js"
+  integrity="sha256-it5nQKHTz+34HijZJQkpNBIHsjpV8b6QzMJs9tmOBSo="
+  crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../../../js/jquery.datetimepicker.css">
+<!-- นำเข้า Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    
+	<!-- นำเข้า Select2 CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
+ 
+</head>
+
+<body action="<?php echo $editFormAction; ?>">
+
+<?php include ("../../../head.php");?>
+
+<form action="<?php echo $editFormAction; ?>" method="POST" enctype="multipart/form-data" name="insertstudentparent" id="insertstudentparent">
+<div class="container">
+<a href="index.php?TeacherID=<?php echo $row_teacherID['TeacherID']; ?>&dutyyearID=<?php echo $row_dutyyear['dutyyearID']; ?>" class="btn btn-primary">กลับไปหน้าข้อมูลหน้าที่อาจารย์</a>
+ <h2 style="text-align:center;">ปรับปรุงข้อมูลหน้าที่อาจารย์</h2>
+     
+  <table height="238" class="table table-condensed">
+    
+    <tbody>
+      <tr>
+        <td>รหัสอาจารย์</td>
+        <td><input name="TeacherID" type="text" required="required" class="form-control" id="TeacherID" placeholder="ใส่รหัสนักเรียน เฉพาะตัวเลขเท่านั้น" pattern="[0-9]{1,}" value="<?php echo $row_teacherID['TeacherID']; ?>" readonly></td>
+      </tr>
+       <tr>
+        <td>ชื่อ</td>
+        <td><input name="Teacher_name" type="text" required="required" class="form-control" id="StudentID" placeholder="ใส่ชื่อ" value="<?php echo $row_teacherID['name']; ?>" readonly></td>
+      </tr>
+       <tr>
+        <td>นามสกุล</td>
+        <td><input name="Teacher_surname" type="text" required="required" class="form-control" id="StudentID" placeholder="ใส่นามสกุล" value="<?php echo $row_teacherID['surname']; ?>"  readonly></td>
+      </tr>
+      <tr>
+      <td>ปีการศึกษา</td>
+      <td><?php echo $row_dutyyear['AcademicYears']; ?>
+        <input name="dutyyearID" type="hidden" id="dutyyearID" value="<?php echo $row_duty['dutyyearID']; ?>"></td>
+      </tr>
+       <tr>
+      <td>หน้าที่ที่รับผิดฃอบ</td>
+      <td><input name="dutyname" type="text" class="form-control" id="dutyname" value="<?php echo $row_duty['dutyname']; ?>"></td>
+      </tr>
+   
+      
+      <td colspan="2" style="text-align:center;"><input name="inserstudentaward" type="submit" id="inserstudentaward" value="ปรับปรุงข้อมูลปีการศึกษา" class="btn btn-success" >
+        <input name="dutyID" type="hidden" id="dutyID" value="<?php echo $row_duty['dutyID']; ?>"></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+<input type="hidden" name="MM_update" value="insertstudentparent">
+</form>
+
+
+</body>
+
+</html>
+<?php
+mysqli_free_result($teacherID);
+
+mysqli_free_result($academicyear);
+
+mysqli_free_result($dutyyear);
+
+mysqli_free_result($duty);
+?>

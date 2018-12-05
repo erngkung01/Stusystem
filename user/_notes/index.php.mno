@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Student" value="name:studentID;datatype:253,name:PersonID;datatype:253,name:PrefixCode;datatype:3,name:student_name;datatype:253,name:student_surname;datatype:253,name:PrefixCode;datatype:3,name:PrefixName;datatype:253" />
+	<infoitem key="UD_user" value="name:userid;datatype:3,name:username;datatype:253,name:password;datatype:253,name:user_name;datatype:253,name:usertypeid;datatype:253,name:usertypeid;datatype:253,name:usertype_name;datatype:253" />
+	<infoitem key="UD_usertype" value="name:usertypeid;datatype:253,name:usertype_name;datatype:253" />
+	<infoitem key="UD_userupdate" value="name:userid;datatype:3,name:username;datatype:253,name:password;datatype:253,name:user_name;datatype:253,name:usertypeid;datatype:253" />
+	<infoitem key="UD_teacher" value="name:TeacherID;datatype:253,name:PersonID;datatype:253,name:PrefixCode;datatype:3,name:name;datatype:253,name:surname;datatype:253,name:Teacher_img;datatype:253,name:GenderCode;datatype:3,name:WorkDate;datatype:10,name:PositionID;datatype:3,name:tel;datatype:253,name:email;datatype:253" />
+</info>

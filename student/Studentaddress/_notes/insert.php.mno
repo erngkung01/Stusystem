@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Prefix" value="name:PrefixCode;datatype:3,name:PrefixName;datatype:253" />
+	<infoitem key="UD_gender" value="name:GenderCode;datatype:3,name:GenderName;datatype:253" />
+	<infoitem key="UD_blger" value="name:blgerid;datatype:3,name:blgerName;datatype:253" />
+	<infoitem key="UD_religion" value="name:Religionid;datatype:3,name:Religionname;datatype:253" />
+	<infoitem key="UD_group" value="name:groupid;datatype:253,name:group_name;datatype:253,name:TeacherID;datatype:253" />
+	<infoitem key="UD_studentstatus" value="name:statusid;datatype:3,name:Statusname;datatype:253" />
+	<infoitem key="UD_student" value="name:studentID;datatype:253,name:PersonID;datatype:253,name:PrefixCode;datatype:3,name:student_name;datatype:253,name:student_surname;datatype:253,name:student_img;datatype:253,name:GenderCode;datatype:3,name:blgerid;datatype:3,name:student_Birthdate;datatype:10,name:Student_Nickname;datatype:253,name:Religionid;datatype:3,name:groupid;datatype:253,name:student_GPA;datatype:253,name:statusid;datatype:3,name:stu_tel;datatype:253" />
+	<infoitem key="UD_Province" value="name:PROVINCE_ID;datatype:3,name:PROVINCE_CODE;datatype:253,name:PROVINCE_NAME;datatype:253,name:GEO_ID;datatype:3" />
+	<infoitem key="UD_Amphur" value="name:AMPHUR_ID;datatype:3,name:AMPHUR_CODE;datatype:253,name:AMPHUR_NAME;datatype:253,name:GEO_ID;datatype:3,name:PROVINCE_ID;datatype:3" />
+	<infoitem key="UD_district" value="name:DISTRICT_ID;datatype:3,name:DISTRICT_CODE;datatype:253,name:DISTRICT_NAME;datatype:253,name:AMPHUR_ID;datatype:3,name:PROVINCE_ID;datatype:3,name:GEO_ID;datatype:3" />
+</info>

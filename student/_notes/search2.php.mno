@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_student" value="name:studentID;datatype:253,name:PersonID;datatype:253,name:PrefixCode;datatype:3,name:student_name;datatype:253,name:student_surname;datatype:253,name:student_img;datatype:253,name:GenderCode;datatype:3,name:blgerid;datatype:3,name:student_Birthdate;datatype:10,name:Student_Nickname;datatype:253,name:Religionid;datatype:3,name:GradeLevel;datatype:3,name:groupid;datatype:253,name:AcademicYears;datatype:3,name:Semester;datatype:3,name:statusid;datatype:3,name:stu_tel;datatype:253" />
+	<infoitem key="UD_Prefixcode" value="name:PrefixCode;datatype:3,name:PrefixName;datatype:253" />
+	<infoitem key="UD_Gender" value="name:GenderCode;datatype:3,name:GenderName;datatype:253" />
+	<infoitem key="UD_studentstatus" value="name:statusid;datatype:3,name:Statusname;datatype:253" />
+	<infoitem key="UD_Student" value="name:studentID;datatype:253,name:PersonID;datatype:253,name:PrefixCode;datatype:3,name:student_name;datatype:253,name:student_surname;datatype:253,name:student_img;datatype:253,name:GenderCode;datatype:3,name:blgerid;datatype:3,name:student_Birthdate;datatype:10,name:Student_Nickname;datatype:253,name:Religionid;datatype:3,name:GradeLevel;datatype:3,name:groupid;datatype:253,name:AcademicYears;datatype:3,name:Semester;datatype:3,name:statusid;datatype:3,name:stu_tel;datatype:253,name:PrefixCode;datatype:3,name:PrefixName;datatype:253,name:studentID;datatype:253,name:PersonID;datatype:253,name:Homeid;datatype:253,name:moo;datatype:253,name:street;datatype:253,name:DISTRICT_ID;datatype:3,name:AMPHUR_ID;datatype:3,name:PROVINCE_ID;datatype:3,name:ZipCode;datatype:253,name:stu_gps;datatype:252" />
+</info>
