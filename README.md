@@ -2,7 +2,7 @@
 โปรเจ็คจบ ปี พ.ศ. 2561
 
 
-<h1><b style="color:red;">Admin Account</b></h1>
+<h2 font color="red"><b>Admin Account</b></h2>
 <br>
 Username : admin
 <br>
