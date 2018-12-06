@@ -169,15 +169,15 @@ $totalRows_user = mysqli_num_rows($user);
       
        <tr>
         <td>รหัสผ่านเดิม</td>
-        <td><input name="oldpassword" type="text" required="required" class="form-control" id="oldpassword" placeholder="รหัสผ่านเดิม" ></td>
+        <td><input name="oldpassword" type="password" required="required" class="form-control" id="oldpassword" placeholder="รหัสผ่านเดิม" ></td>
       </tr>
       <tr>
       <td>รหัสผ่านใหม่</td>
-      <td><input name="password" type="text" required="required" class="form-control" id="password" placeholder="รหัสผ่านใหม่" ></td>
+      <td><input name="password" type="password" required="required" class="form-control" id="password" placeholder="รหัสผ่านใหม่" ></td>
       </tr>
       <tr>
       <td>ยืนยัน รหัสผ่านใหม่</td>
-      <td><input name="repassword" type="text" required="required" class="form-control" id="repassword" placeholder="ยืนยันรหัสผ่านใหม่" ></td>
+      <td><input name="repassword" type="password" required="required" class="form-control" id="repassword" placeholder="ยืนยันรหัสผ่านใหม่" ></td>
       </tr>
        
      
