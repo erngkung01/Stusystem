@@ -56,7 +56,7 @@
      	<li><a href="<?php echo $web;  ?>/user/index.php">ระบบจัดการข้อมูลสมาชิก</a></li>
 
        <?php  } ?>
-        
+        	<li><a href="<?php echo $web;  ?>/chart/index.php">ระบบรายงานข้อมูลนักเรียน</a></li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
