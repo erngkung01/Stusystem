@@ -174,6 +174,7 @@ $dataPoints2 = array(
 <html>
 <head>
 <meta charset="utf-8">  
+<title>จำนวนนักเรียนแต่ละระดับชั้น</title>
 <script>
 window.onload = function () {
  

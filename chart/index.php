@@ -1,77 +1,91 @@
 <?php
- 
-$dataPoints1 = array(
-	array("label"=> "2010", "y"=> 36.12),
-	array("label"=> "2011", "y"=> 34.87),
-	array("label"=> "2012", "y"=> 40.30),
-	array("label"=> "2013", "y"=> 35.30),
-	array("label"=> "2014", "y"=> 39.50),
-	array("label"=> "2015", "y"=> 50.82),
-	
-);
-$dataPoints2 = array(
-	array("label"=> "2010", "y"=> 64.61),
-	array("label"=> "2011", "y"=> 70.55),
-	array("label"=> "2012", "y"=> 72.50),
-	array("label"=> "2013", "y"=> 81.30),
-	array("label"=> "2014", "y"=> 63.60),
-	array("label"=> "2015", "y"=> 69.38),
-	
-);
-	
+if (!isset($_SESSION)) {
+  session_start();
+}
+$MM_authorizedUsers = "111,222,333,444";
+$MM_donotCheckaccess = "false";
+
+// *** Restrict Access To Page: Grant or deny access to this page
+function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
+  // For security, start by assuming the visitor is NOT authorized. 
+  $isValid = False; 
+
+  // When a visitor has logged into this site, the Session variable MM_Username set equal to their username. 
+  // Therefore, we know that a user is NOT logged in if that Session variable is blank. 
+  if (!empty($UserName)) { 
+    // Besides being logged in, you may restrict access to only certain users based on an ID established when they login. 
+    // Parse the strings into arrays. 
+    $arrUsers = Explode(",", $strUsers); 
+    $arrGroups = Explode(",", $strGroups); 
+    if (in_array($UserName, $arrUsers)) { 
+      $isValid = true; 
+    } 
+    // Or, you may restrict access to only certain users based on their username. 
+    if (in_array($UserGroup, $arrGroups)) { 
+      $isValid = true; 
+    } 
+    if (($strUsers == "") && false) { 
+      $isValid = true; 
+    } 
+  } 
+  return $isValid; 
+}
+
+$MM_restrictGoTo = "../index.php";
+if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
+  $MM_qsChar = "?";
+  $MM_referrer = $_SERVER['PHP_SELF'];
+  if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
+  if (isset($_SERVER['QUERY_STRING']) && strlen($_SERVER['QUERY_STRING']) > 0) 
+  $MM_referrer .= "?" . $_SERVER['QUERY_STRING'];
+  $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
+  header("Location: ". $MM_restrictGoTo); 
+  exit;
+}
 ?>
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="utf-8">  
-<script>
-window.onload = function () {
- 
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	theme: "light2",
-	title:{
-		text: "จำนวนนักเรียน"
-	},
-	legend:{
-		cursor: "pointer",
-		verticalAlign: "center",
-		horizontalAlign: "right",
-		itemclick: toggleDataSeries
-	},
-	data: [{
-		type: "column",
-		name: "ชาย",
-		indexLabel: "{y}",
-		yValueFormatString: "#0.## คน",
-		showInLegend: true,
-		dataPoints: <?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>
-	},{
-		type: "column",
-		name: "หญิง",
-		indexLabel: "{y}",
-		yValueFormatString: "#0.## คน",
-		showInLegend: true,
-		dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
-	}]
-});
-chart.render();
- 
-function toggleDataSeries(e){
-	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-		e.dataSeries.visible = false;
-	}
-	else{
-		e.dataSeries.visible = true;
-	}
-	chart.render();
-}
- 
-}
-</script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ระบบรายงานข้อมูลนักเรียน</title>
+<link href="../css/bootstrap.css" rel="stylesheet" type="text/css">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
 </head>
 <body>
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<div class="container">
+<h1>ระบบรายงานข้อมูลนักเรียนโรงเรียนอินทารามวิทยา</h1>
+
+<div role="tabpanel">
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="active"><a href="#home1" data-toggle="tab" role="tab">จำนวนนักเรียนรวม</a></li>
+    <li><a href="#paneTwo1" data-toggle="tab" role="tab">จำนวนนักเรียนแต่ละระดับชั้น</a></li>
+    
+  </ul>
+  <div id="tabContent1" class="tab-content">
+    <div class="tab-pane fade in active" id="home1">
+     <iframe src="all.php" width="100%" height="600"></iframe>
+   
+    </div>
+    <div class="tab-pane fade" id="paneTwo1">
+     <iframe src="group.php" width="100%" height="600"></iframe>
+    
+     
+    </div>
+   
+  </div>
+</div>
+<script src="../js/jquery-1.11.2.min.js" type="text/javascript"></script>
+<script src="../js/bootstrap.js" type="text/javascript"></script>
+
+
+</div>
 </body>
-</html>  
+</html>
