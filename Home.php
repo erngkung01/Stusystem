@@ -160,7 +160,7 @@ $totalPages_Recordset1 = ceil($totalRows_Recordset1/$maxRows_Recordset1)-1;
 <?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222){ ?>
 <div class="col-sm-4">
 <div class="panel panel-default">
-      <div class="panel-heading"><h3><a href="Position/index.php" style="color:#000B8B;""><i class="glyphicon glyphicon-th"></i>  ระบบจัดการข้อมูลตำแหน่ง</a></h3></div>
+      <div class="panel-heading"><h3><a href="Position/index.php" style="color:#000B8B;""><i class="glyphicon glyphicon-glass"></i>  ระบบจัดการข้อมูลตำแหน่ง</a></h3></div>
       <div class="panel-body" style="text-align:right;"><a href="Position/index.php" style="color:#0100A7">คลิกที่นี่</a></div>
     </div>
 </div>
@@ -168,7 +168,7 @@ $totalPages_Recordset1 = ceil($totalRows_Recordset1/$maxRows_Recordset1)-1;
 
 <div class="col-sm-4">
 <div class="panel panel-default">
-      <div class="panel-heading"><h3><a href="chart/index.php" style="color:#000B8B;""><i class="glyphicon glyphicon-th"></i>  ระบบรายงานข้อมูลนักเรียน</a></h3></div>
+      <div class="panel-heading"><h3><a href="chart/index.php" style="color:#000B8B;""><i class="glyphicon glyphicon-equalizer"></i>  ระบบรายงานข้อมูลนักเรียน</a></h3></div>
       <div class="panel-body" style="text-align:right;"><a href="chart/index.php"  style="color:#0100A7">คลิกที่นี่</a></div>
     </div>
 </div>
