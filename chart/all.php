@@ -36,13 +36,13 @@ global $stusystem;
 }
 
 //42320819($database_stusystem, $stusystem);
-$query_male = "SELECT * FROM tbl_student Where tbl_student.GenderCode =1 and tbl_student.statusid = 1";
+$query_male = "SELECT * FROM tbl_student Where tbl_student.GenderCode =1 and NOT tbl_student.statusid = 2";
 $male = mysqli_query($stusystem, $query_male) or die(mysqli_error($stusystem));
 $row_male = mysqli_fetch_assoc($male);
 $totalRows_male = mysqli_num_rows($male);
 
 //42320819($database_stusystem, $stusystem);
-$query_female = "SELECT * FROM tbl_student WHERE tbl_student.GenderCode =2 and tbl_student.statusid = 1";
+$query_female = "SELECT * FROM tbl_student WHERE tbl_student.GenderCode =2 and NOT tbl_student.statusid = 2";
 $female = mysqli_query($stusystem, $query_female) or die(mysqli_error($stusystem));
 $row_female = mysqli_fetch_assoc($female);
 $totalRows_female = mysqli_num_rows($female);
@@ -74,7 +74,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	}],
 	data: [{
 		type: "pie",
-		yValueFormatString: "#,##0.00\" คน\"",
+		yValueFormatString: "#,##0\" คน\"",
 		indexLabel: "{label} ({y})",
 		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
 	}]
