@@ -166,6 +166,12 @@ $totalPages_Recordset1 = ceil($totalRows_Recordset1/$maxRows_Recordset1)-1;
 </div>
 <?php } ?>
 
+<div class="col-sm-4">
+<div class="panel panel-default">
+      <div class="panel-heading"><h3><a href="chart/index.php" style="color:#000B8B;""><i class="glyphicon glyphicon-th"></i>  ระบบรายงานข้อมูลนักเรียน</a></h3></div>
+      <div class="panel-body" style="text-align:right;"><a href="chart/index.php"  style="color:#0100A7">คลิกที่นี่</a></div>
+    </div>
+</div>
 
 
 

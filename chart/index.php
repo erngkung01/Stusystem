@@ -60,6 +60,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 </head>
 <body>
 
+<?php include ("../head.php");?>
+
 <div class="container">
 <h1>ระบบรายงานข้อมูลนักเรียนโรงเรียนอินทารามวิทยา</h1>
 
