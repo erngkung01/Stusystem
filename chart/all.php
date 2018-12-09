@@ -47,6 +47,7 @@ $female = mysqli_query($stusystem, $query_female) or die(mysqli_error($stusystem
 $row_female = mysqli_fetch_assoc($female);
 $totalRows_female = mysqli_num_rows($female);
 
+$studenttotal = $totalRows_female+$totalRows_male ;
  
 $dataPoints = array( 
 	array("label"=>"ชาย", "y"=>$totalRows_male),
@@ -88,6 +89,9 @@ chart.render();
 
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<br>
+จำนวนนักเรียนทั้งหมด <?php echo $studenttotal ?> คน
+
 </body>
 </html>
 <?php

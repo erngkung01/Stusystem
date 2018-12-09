@@ -160,6 +160,7 @@ $totalRows_prefixparent = mysqli_num_rows($prefixparent);
     {
         size: auto;   /* กำหนดขนาดของหน้าเอกสารเป็นออโต้ครับ */
         margin: 0mm;  /* กำหนดขอบกระดาษเป็น 0 มม. */
+		margin-left:auto;
     }
 
     body 

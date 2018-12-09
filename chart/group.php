@@ -144,6 +144,8 @@ $row_p6female = mysqli_fetch_assoc($p6female);
 $totalRows_p6female = mysqli_num_rows($p6female);
 
  
+ $studenttotal= $totalRows_a1male+$totalRows_a2male+$totalRows_a3male+$totalRows_p1male+$totalRows_p2male+$totalRows_p3male+$totalRows_p4male+$totalRows_p5male+$totalRows_p6male+$totalRows_a1female+$totalRows_a2female+$totalRows_a3female+$totalRows_p1female+$totalRows_p2female+$totalRows_p3female+$totalRows_p4female+$totalRows_p5female+$totalRows_p6female ;
+ 
 $dataPoints1 = array(
 	array("label"=> "อ.1", "y"=> $totalRows_a1male),
 	array("label"=> "อ.2", "y"=> $totalRows_a2male),
@@ -224,6 +226,9 @@ function toggleDataSeries(e){
 <body>
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<br>
+จำนวนนักเรียนทั้งหมด <?php echo $studenttotal ?> คน
+
 </body>
 </html>
 <?php
