@@ -69,6 +69,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
   <ul class="nav nav-tabs" role="tablist">
     <li class="active"><a href="#home1" data-toggle="tab" role="tab">จำนวนนักเรียนรวม</a></li>
     <li><a href="#paneTwo1" data-toggle="tab" role="tab">จำนวนนักเรียนแต่ละระดับชั้น</a></li>
+    <li><a href="#panethree" data-toggle="tab" role="tab">จำนวนนักเรียนแต่ละระดับชั้น</a></li>
     
   </ul>
   <div id="tabContent1" class="tab-content">
@@ -78,6 +79,12 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
     </div>
     <div class="tab-pane fade" id="paneTwo1">
      <iframe src="group.php" width="100%" height="600"></iframe>
+    
+     
+    </div>
+    
+      <div class="tab-pane fade" id="panethree">
+     <iframe src="teacher.php" width="100%" height="600"></iframe>
     
      
     </div>
