@@ -91,17 +91,6 @@ if (isset($_SERVER['QUERY_STRING'])) {
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "insertstudentdata")) {
 	
 	
-	if($_POST['student_Birthdate']!=''){
-		$date = $_POST['student_Birthdate'];
-		$show=explode("-",$date);
-		$date1 = $show[0];
-		$date2 = $show[1];
-		$date3 = $show[2]-543;
-		$dateval =  $date3."/".$date2."/".$date1;
-		
-		}else{
-			$dateval= "0000/00/00";
-			}
 	
 	
   $updateSQL = sprintf("UPDATE tbl_student SET PrefixCode=%s, student_name=%s, student_surname=%s, GenderCode=%s, blgerid=%s, student_Birthdate=%s, Student_Nickname=%s, Religionid=%s, GradeLevel=%s, groupid=%s, EntryAcademicYear=%s, AcademicYears=%s, Semester=%s, statusid=%s, stu_tel=%s WHERE studentID=%s AND PersonID=%s",
@@ -110,7 +99,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "insertstudentdata")
                        GetSQLValueString($_POST['student_surname'], "text"),
                        GetSQLValueString($_POST['GenderCode'], "int"),
                        GetSQLValueString($_POST['blgerid'], "int"),
-                       GetSQLValueString($dateval, "date"),
+                       GetSQLValueString($_POST['student_Birthdate'], "date"),
                        GetSQLValueString($_POST['student_Nickname'], "text"),
                        GetSQLValueString($_POST['Religionid'], "int"),
                        GetSQLValueString($_POST['classlevelid'], "int"),

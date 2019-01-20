@@ -35,9 +35,9 @@ global $stusystem;
 }
 }
 
-if ((isset($_GET['userid'])) && ($_GET['userid'] != "")) {
-  $deleteSQL = sprintf("DELETE FROM tbl_user WHERE userid=%s",
-                       GetSQLValueString($_GET['userid'], "int"));
+if ((isset($_GET['username'])) && ($_GET['username'] != "")) {
+  $deleteSQL = sprintf("DELETE FROM tbl_user WHERE username=%s",
+                       GetSQLValueString($_GET['username'], "text"));
 
   //dwthai.com($database_stusystem, $stusystem);
   $Result1 = mysqli_query($stusystem, $deleteSQL) or die(mysqli_error($stusystem));

@@ -86,16 +86,17 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "insertstudentaddress")) {
-  $updateSQL = sprintf("UPDATE tbl_teacheraddress SET PersonID=%s, Homeid=%s, moo=%s, street=%s, DISTRICT_ID=%s, AMPHUR_ID=%s, PROVINCE_ID=%s, ZipCode=%s WHERE TeacherID=%s",
+  $updateSQL = sprintf("UPDATE tbl_teacheraddress SET PersonID=%s, HouseNo=%s, moo=%s, street=%s, DISTRICT_ID=%s, AMPHUR_ID=%s, PROVINCE_ID=%s, ZipCode=%s WHERE TeacherID=%s AND HomeID=%s",
                        GetSQLValueString($_POST['PersonID'], "text"),
-                       GetSQLValueString($_POST['Homeid'], "text"),
+                       GetSQLValueString($_POST['HouseNo'], "text"),
                        GetSQLValueString($_POST['moo'], "text"),
                        GetSQLValueString($_POST['street'], "text"),
                        GetSQLValueString($_POST['district'], "int"),
                        GetSQLValueString($_POST['amphur'], "int"),
                        GetSQLValueString($_POST['province'], "int"),
                        GetSQLValueString($_POST['ZipCode'], "text"),
-                       GetSQLValueString($_POST['TeacherID'], "text"));
+                       GetSQLValueString($_POST['TeacherID'], "text"),
+                       GetSQLValueString($_POST['Homeid'], "text"));
 
   //mysql_select_db($database_stusystem, $stusystem);
   $Result1 = mysqli_query($stusystem, $updateSQL) or die(mysqli_error($stusystem));
@@ -196,9 +197,13 @@ $totalRows_distic = mysqli_num_rows($distic);
         <td><input name="PersonID" type="text" required="required" class="form-control" id="PersonID" placeholder="ใส่รหัสประชาชน เฉพาะตัวเลขเท่านั้น" pattern="[0-9]{1,}" value="<?php echo $row_teacher['PersonID']; ?>" readonly></td>
       </tr>
       
+       <tr>
+        <td>รหัสประจำบ้าน</td>
+        <td><input name="Homeid" type="text" autofocus required="required" class="form-control" id="Homeid" placeholder="ใส่รหัสประจำบ้าน" value="<?php echo $row_teacheraddress['HomeID']; ?>" readonly></td>
+      </tr>
       <tr>
         <td>เลขที่บ้าน</td>
-        <td><input name="Homeid" type="text" autofocus required="required" class="form-control" id="Homeid" placeholder="ใส่บ้านเลขที่" value="<?php echo $row_teacheraddress['Homeid']; ?>"></td>
+        <td><input name="HouseNo" type="text" autofocus required="required" class="form-control" id="HouseNo" placeholder="ใส่บ้านเลขที่" value="<?php echo $row_teacheraddress['HouseNo']; ?>"></td>
       </tr>
       <tr>
         <td>หมู่</td>
@@ -407,7 +412,7 @@ do {
       </tr>
      
       
-      <td colspan="2" style="text-align:center;"><input name="inserstudentdata" type="submit" id="inserstudentdata" value="เพิ่มข้อมูลที่อยู่อาจารย์" class="btn btn-success" ></td>
+      <td colspan="2" style="text-align:center;"><input name="inserstudentdata" type="submit" id="inserstudentdata" value="ปรับปรุงข้อมูลที่อยู่อาจารย์" class="btn btn-success" ></td>
         </tr>
     </tbody>
   </table>

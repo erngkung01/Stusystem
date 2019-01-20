@@ -166,15 +166,9 @@ $page_active= 1;
           
           <td>
           <?php
-		if($row_studentdata['student_Birthdate']!=''){
-		$date = $row_studentdata['student_Birthdate'];
-		$show=explode("-",$date);
-		$date1 = $show[0]+543;
-		$date2 = $show[1];
-		$date3 = $show[2];
-		$dateval =  $date3."/".$date2."/".$date1;
-		echo $dateval;
-		}
+		
+		echo $row_studentdata['student_Birthdate'];
+		
 		
 		 ?>
           </td>

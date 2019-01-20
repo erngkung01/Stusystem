@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <info>
-	<infoitem key="UD_teacher" value="name:TeacherID;datatype:253,name:PersonID;datatype:253,name:PrefixCode;datatype:3,name:name;datatype:253,name:surname;datatype:253,name:Teacher_img;datatype:253,name:GenderCode;datatype:3,name:tel;datatype:253,name:email;datatype:253" />
-	<infoitem key="UD_teacheraddress" value="name:TeacherID;datatype:253,name:PersonID;datatype:253,name:Homeid;datatype:253,name:moo;datatype:253,name:street;datatype:253,name:DISTRICT_ID;datatype:3,name:AMPHUR_ID;datatype:3,name:PROVINCE_ID;datatype:3,name:ZipCode;datatype:253" />
+	<infoitem key="UD_teacher" value="name:TeacherID;datatype:253,name:PersonID;datatype:253,name:PrefixCode;datatype:3,name:name;datatype:253,name:surname;datatype:253,name:Teacher_img;datatype:253,name:GenderCode;datatype:3,name:WorkDate;datatype:10,name:PositionID;datatype:3,name:tel;datatype:253,name:email;datatype:253" />
+	<infoitem key="UD_teacheraddress" value="name:TeacherID;datatype:253,name:PersonID;datatype:253,name:HomeID;datatype:253,name:HouseNo;datatype:253,name:moo;datatype:253,name:street;datatype:253,name:DISTRICT_ID;datatype:3,name:AMPHUR_ID;datatype:3,name:PROVINCE_ID;datatype:3,name:ZipCode;datatype:253" />
 	<infoitem key="UD_Recordset1" value="name:PROVINCE_ID;datatype:3,name:PROVINCE_CODE;datatype:253,name:PROVINCE_NAME;datatype:253,name:GEO_ID;datatype:3" />
 	<infoitem key="UD_province" value="name:PROVINCE_ID;datatype:3,name:PROVINCE_CODE;datatype:253,name:PROVINCE_NAME;datatype:253,name:GEO_ID;datatype:3" />
 	<infoitem key="UD_amphur" value="name:AMPHUR_ID;datatype:3,name:AMPHUR_CODE;datatype:253,name:AMPHUR_NAME;datatype:253,name:GEO_ID;datatype:3,name:PROVINCE_ID;datatype:3" />

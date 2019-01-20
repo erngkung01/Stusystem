@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <info>
-	<infoitem key="UD_teacher" value="name:TeacherID;datatype:253,name:PersonID;datatype:253,name:PrefixCode;datatype:3,name:name;datatype:253,name:surname;datatype:253,name:Teacher_img;datatype:253,name:GenderCode;datatype:3,name:tel;datatype:253,name:email;datatype:253,name:PrefixCode;datatype:3,name:PrefixName;datatype:253" />
+	<infoitem key="UD_teacher" value="name:TeacherID;datatype:253,name:PersonID;datatype:253,name:PrefixCode;datatype:3,name:name;datatype:253,name:surname;datatype:253,name:Teacher_img;datatype:253,name:GenderCode;datatype:3,name:WorkDate;datatype:10,name:PositionID;datatype:3,name:tel;datatype:253,name:email;datatype:253,name:PrefixCode;datatype:3,name:PrefixName;datatype:253" />
 	<infoitem key="UD_class" value="name:classlevelid;datatype:3,name:classlevelname;datatype:253" />
-	<infoitem key="UD_group" value="name:groupid;datatype:253,name:group_name;datatype:253,name:TeacherID;datatype:253,name:classlevelid;datatype:3" />
+	<infoitem key="UD_group" value="name:groupid;datatype:253,name:group_name;datatype:253,name:TeacherID;datatype:253,name:classlevelid;datatype:3,name:AcademicYearsID;datatype:3" />
+	<infoitem key="UD_AcademicYears" value="name:AcademicYearsID;datatype:3,name:AcademicYears;datatype:3" />
 </info>

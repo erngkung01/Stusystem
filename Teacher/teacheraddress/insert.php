@@ -86,10 +86,11 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "insertstudentaddress")) {
-  $insertSQL = sprintf("INSERT INTO tbl_teacheraddress (TeacherID, PersonID, Homeid, moo, street, DISTRICT_ID, AMPHUR_ID, PROVINCE_ID, ZipCode) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
+  $insertSQL = sprintf("INSERT INTO tbl_teacheraddress (TeacherID, PersonID, HomeID, HouseNo, moo, street, DISTRICT_ID, AMPHUR_ID, PROVINCE_ID, ZipCode) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['TeacherID'], "text"),
                        GetSQLValueString($_POST['PersonID'], "text"),
                        GetSQLValueString($_POST['Homeid'], "text"),
+                       GetSQLValueString($_POST['HouseNo'], "text"),
                        GetSQLValueString($_POST['moo'], "text"),
                        GetSQLValueString($_POST['street'], "text"),
                        GetSQLValueString($_POST['district'], "int"),
@@ -100,7 +101,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "insertstudentaddres
  //dwthai.com($database_stusystem, $stusystem);
   $Result1 = mysqli_query($stusystem, $insertSQL) or die(mysqli_error($stusystem));
 
-  $insertGoTo = "../teacheraward/index.php";
+  $insertGoTo = "../index.php";
   if (isset($_SERVER['QUERY_STRING'])) {
     $insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
     $insertGoTo .= $_SERVER['QUERY_STRING'];
@@ -169,8 +170,12 @@ $totalRows_teacher = mysqli_num_rows($teacher);
       </tr>
       
       <tr>
+        <td>รหัสประจำบ้าน</td>
+        <td><input name="Homeid" type="text" autofocus required="required" class="form-control" id="Homeid" placeholder="ใส่รหัสประจำบ้าน" maxlength="11"></td>
+      </tr>
+      <tr>
         <td>เลขที่บ้าน</td>
-        <td><input name="Homeid" type="text" autofocus required="required" class="form-control" id="Homeid" placeholder="ใส่บ้านเลขที่"></td>
+        <td><input name="HouseNo" type="text" autofocus required="required" class="form-control" id="HouseNo" placeholder="ใส่บ้านเลขที่"></td>
       </tr>
       <tr>
         <td>หมู่</td>

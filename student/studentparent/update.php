@@ -86,7 +86,8 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "updatestudentparent")) {
-  $updateSQL = sprintf("UPDATE tbl_parent SET FatherPrefixCode=%s, FatherName=%s, FatherSurName=%s, Father_tel=%s, Fatheroccupa=%s, FatherSalary=%s, MatherPrefixCode=%s, Mathername=%s, Mathersurname=%s, Mather_tel=%s, Matheroccupa=%s, MatherSalary=%s, ParentPrefixCode=%s, ParentName=%s, ParentSurname=%s, Parent_tel=%s, Parentoccupa=%s, ParentSalary=%s WHERE studentID=%s AND PersonID=%s",
+  $updateSQL = sprintf("UPDATE tbl_parent SET PersonID=%s, FatherPrefixCode=%s, FatherName=%s, FatherSurName=%s, Father_tel=%s, Fatheroccupa=%s, FatherSalary=%s, MatherPrefixCode=%s, Mathername=%s, Mathersurname=%s, MatherPersonID=%s, Mather_tel=%s, Matheroccupa=%s, MatherSalary=%s, ParentPrefixCode=%s, ParentName=%s, ParentSurname=%s, ParentPersonID=%s, Parent_tel=%s, Parentoccupa=%s, ParentSalary=%s WHERE studentID=%s AND FatherPersonID=%s",
+                       GetSQLValueString($_POST['PersonID'], "text"),
                        GetSQLValueString($_POST['FatherPrefixCode'], "int"),
                        GetSQLValueString($_POST['FatherName'], "text"),
                        GetSQLValueString($_POST['FatherSurName'], "text"),
@@ -96,22 +97,24 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "updatestudentparent
                        GetSQLValueString($_POST['MatherPrefixCode'], "int"),
                        GetSQLValueString($_POST['Mathername'], "text"),
                        GetSQLValueString($_POST['Mathersurname'], "text"),
+                       GetSQLValueString($_POST['MatherPersonID'], "text"),
                        GetSQLValueString($_POST['Mather_tel'], "text"),
                        GetSQLValueString($_POST['Matheroccupa'], "text"),
                        GetSQLValueString($_POST['MatherSalary'], "text"),
                        GetSQLValueString($_POST['ParentPrefixCode'], "int"),
                        GetSQLValueString($_POST['ParentName'], "text"),
                        GetSQLValueString($_POST['ParentSurname'], "text"),
+                       GetSQLValueString($_POST['ParentPersonID'], "text"),
                        GetSQLValueString($_POST['Parent_tel'], "text"),
                        GetSQLValueString($_POST['Parentoccupa'], "text"),
                        GetSQLValueString($_POST['ParentSalary'], "text"),
                        GetSQLValueString($_POST['StudentID'], "text"),
-                       GetSQLValueString($_POST['PersonID'], "text"));
+                       GetSQLValueString($_POST['FatherPersonID'], "text"));
 
   //mysql_select_db($database_stusystem, $stusystem);
   $Result1 = mysqli_query($stusystem, $updateSQL) or die(mysqli_error($stusystem));
 
-  $updateGoTo = "index.php";
+  $updateGoTo = "index.php?studentID=<?php echo ".$row_student['studentID']."; ?>";
   if (isset($_SERVER['QUERY_STRING'])) {
     $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
     $updateGoTo .= $_SERVER['QUERY_STRING'];
@@ -178,7 +181,7 @@ $totalRows_studentparent = mysqli_num_rows($studentparent);
 
 <form action="<?php echo $editFormAction; ?>" method="POST" enctype="multipart/form-data" name="updatestudentparent" id="updatestudentparent">
 <div class="container">
- <a href="../index.php" class="btn btn-primary">กลับไปหน้าข้อมูลผู้ปกครองนักเรียน</a> 
+ <a href="index.php?studentID=<?php echo $row_student['studentID']; ?>" class="btn btn-primary">กลับไปหน้าข้อมูลผู้ปกครองนักเรียน</a> 
  <h2 style="text-align:center;">ปรับปรุงข้อมูลผู้ปกครองนักเรียน</h2>
      
   <table class="table table-condensed">
@@ -227,7 +230,10 @@ do {
         <td><input name="FatherSurName" type="text" class="form-control" id="FatherSurName" placeholder="ใส่นามสกุล-บิดา" value="<?php echo $row_studentparent['FatherSurName']; ?>"></td>
       </tr>
       
-      
+      <tr>
+        <td>รหัสประชาชน-บิดา</td>
+        <td><input name="FatherPersonID" type="text" class="form-control" id="FatherPersonID" placeholder="รหัสประชาชน-บิดา" value="<?php echo $row_studentparent['FatherPersonID']; ?>" maxlength="13" readonly></td>
+      </tr>
      
       <tr>
         <td>เบอร์โทรศัพท์-บิดา</td>
@@ -268,6 +274,12 @@ do {
         <td><input name="Mathersurname" type="text" class="form-control" id="Mathersurname" placeholder="ใส่นามสกุล-มารดา" value="<?php echo $row_studentparent['Mathersurname']; ?>"></td>
       </tr>
       
+      
+       <tr>
+        <td>รหัสประชาชน-มารดา</td>
+        <td><input name="MatherPersonID" type="text" class="form-control" id="MatherPersonID" placeholder="รหัสประชาชน-มารดา" value="<?php echo $row_studentparent['MatherPersonID']; ?>"  maxlength="13" readonly></td>
+      </tr>
+      
       <tr>
         <td>เบอร์โทรศัพท์-มารดา</td>
         <td><input name="Mather_tel" type="text" class="form-control" id="Mather_tel" placeholder="ใส่เบอร์โทรศัพท์-มารดา" value="<?php echo $row_studentparent['Mather_tel']; ?>"></td>
@@ -306,6 +318,11 @@ do {
         <td><input name="ParentSurname" type="text" class="form-control" id="ParentSurname" placeholder="ใส่นามสกุล-ผู้ปกครอง" value="<?php echo $row_studentparent['ParentSurname']; ?>"></td>
       </tr>
       
+       <tr>
+        <td>รหัสประชาชน-ผู้ปกครอง</td>
+        <td><input name="ParentPersonID" type="text" class="form-control" id="ParentPersonID" placeholder="รหัสประชาชน-ผู้ปกครอง" value="<?php echo $row_studentparent['ParentPersonID']; ?>" maxlength="13" readonly></td>
+      </tr>
+      
       <tr>
         <td>เบอร์โทรศัพท์-ผู้ปกครอง</td>
         <td><input name="Parent_tel" type="text" class="form-control" id="Parent_tel" placeholder="ใส่เบอร์โทรศัพท์-ผู้ปกครอง" value="<?php echo $row_studentparent['Parent_tel']; ?>"></td>
@@ -320,7 +337,8 @@ do {
       </tr>
      
       
-      <td colspan="2" style="text-align:center;"><input name="inserstudentdata" type="submit" id="inserstudentdata" value="ปรับปรุงข้อมูลที่อยู่นักเรียน" class="btn btn-success" ></td>
+      <td colspan="2" style="text-align:center;"><input name="inserstudentdata" type="submit" id="inserstudentdata" value="ปรับปรุงข้อมูลที่อยู่นักเรียน" class="btn btn-success" >
+        <input name="ParentID" type="hidden" id="ParentID" value="<?php echo $row_studentparent['ParentID']; ?>"></td>
         </tr>
     </tbody>
   </table>

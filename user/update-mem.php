@@ -89,24 +89,21 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "updateuserdata")) {
-  $updateSQL = sprintf("UPDATE tbl_user SET username=%s, user_name=%s, usertypeid=%s WHERE userid=%s",
-                       GetSQLValueString($_POST['username'], "text"),
+  $updateSQL = sprintf("UPDATE tbl_user SET user_name=%s, usertypeid=%s WHERE username=%s",
                        GetSQLValueString($_POST['user_name'], "text"),
                        GetSQLValueString($_POST['usertypeid'], "text"),
-                       GetSQLValueString($_POST['userid'], "int"));
+                       GetSQLValueString($_POST['username'], "text"));
 
   //mysql_select_db($database_stusystem, $stusystem);
   $Result1 = mysqli_query($stusystem, $updateSQL) or die(mysqli_error($stusystem));
 
-  $updateGoTo = "index.php";
+  $updateGoTo = "../Home.php";
   if (isset($_SERVER['QUERY_STRING'])) {
     $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
     $updateGoTo .= $_SERVER['QUERY_STRING'];
   }
   header(sprintf("Location: %s", $updateGoTo));
 }
-
-
 
 //42320819($database_stusystem, $stusystem);
 $query_usertype = "SELECT * FROM tbl_usertype";

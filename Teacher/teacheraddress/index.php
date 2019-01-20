@@ -146,8 +146,13 @@ $page_active=11;
     
     <tbody>
       <tr>
+        <td>รหัสบ้าน</td>
+        <td><?php echo $row_teacheraddress['HomeID']; ?>&nbsp;</td>
+        </tr>
+      <tr>
+      <tr>
         <td>บ้านเลขที่</td>
-        <td><?php echo $row_teacheraddress['Homeid']; ?>&nbsp;</td>
+        <td><?php echo $row_teacheraddress['HouseNo']; ?>&nbsp;</td>
         </tr>
       <tr>
         <td>หมู่</td>

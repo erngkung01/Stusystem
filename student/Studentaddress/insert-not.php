@@ -86,10 +86,11 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "insertstudentaddress")) {
-  $insertSQL = sprintf("INSERT INTO tbl_address (studentID, PersonID, Homeid, moo, street, DISTRICT_ID, AMPHUR_ID, PROVINCE_ID, ZipCode, stu_gps) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+  $insertSQL = sprintf("INSERT INTO tbl_address (studentID, PersonID, Homeid, HouseNo, moo, street, DISTRICT_ID, AMPHUR_ID, PROVINCE_ID, ZipCode, stu_gps) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['StudentID'], "text"),
                        GetSQLValueString($_POST['PersonID'], "text"),
                        GetSQLValueString($_POST['Homeid'], "text"),
+                       GetSQLValueString($_POST['HouseNo'], "text"),
                        GetSQLValueString($_POST['moo'], "text"),
                        GetSQLValueString($_POST['street'], "text"),
                        GetSQLValueString($_POST['district'], "int"),
@@ -146,7 +147,7 @@ $totalRows_student = mysqli_num_rows($student);
 
 <form action="<?php echo $editFormAction; ?>" method="POST" enctype="multipart/form-data" name="insertstudentaddress" id="insertstudentaddress">
 <div class="container">
- <a href="index.php" class="btn btn-primary">กลับไปหน้าข้อมูลที่อยู่นักเรียน</a> 
+ <a href="index.php?studentID=<?php echo $row_student['studentID']; ?>" class="btn btn-primary">กลับไปหน้าข้อมูลที่อยู่นักเรียน</a> 
  <h2 style="text-align:center;">เพิ่มข้อมูลที่อยู่นักเรียน</h2>
      
   <table class="table table-condensed">
@@ -170,8 +171,12 @@ $totalRows_student = mysqli_num_rows($student);
       </tr>
       
       <tr>
+        <td>รหัสประจำบ้าน</td>
+        <td><input name="Homeid" type="text" autofocus required="required" class="form-control" id="Homeid" placeholder="ใส่บ้านเลขที่" maxlength="11"></td>
+      </tr>
+      <tr>
         <td>เลขที่บ้าน</td>
-        <td><input name="Homeid" type="text" autofocus required="required" class="form-control" id="Homeid" placeholder="ใส่บ้านเลขที่"></td>
+        <td><input name="HouseNo" type="text" autofocus required="required" class="form-control" id="HouseNo" placeholder="ใส่บ้านเลขที่"></td>
       </tr>
       <tr>
         <td>หมู่</td>

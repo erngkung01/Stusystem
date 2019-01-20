@@ -86,24 +86,27 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "insertstudentparent")) {
-  $insertSQL = sprintf("INSERT INTO tbl_parent (studentID, PersonID, FatherPrefixCode, FatherName, FatherSurName, Father_tel, Fatheroccupa, FatherSalary, MatherPrefixCode, Mathername, Mathersurname, Mather_tel, Matheroccupa, MatherSalary, ParentPrefixCode, ParentName, ParentSurname, Parent_tel, Parentoccupa, ParentSalary) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+  $insertSQL = sprintf("INSERT INTO tbl_parent (studentID, PersonID, FatherPrefixCode, FatherName, FatherSurName, FatherPersonID, Father_tel, Fatheroccupa, FatherSalary, MatherPrefixCode, Mathername, Mathersurname, MatherPersonID, Mather_tel, Matheroccupa, MatherSalary, ParentPrefixCode, ParentName, ParentSurname, ParentPersonID, Parent_tel, Parentoccupa, ParentSalary) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['StudentID'], "text"),
                        GetSQLValueString($_POST['PersonID'], "text"),
                        GetSQLValueString($_POST['FatherPrefixCode'], "int"),
                        GetSQLValueString($_POST['FatherName'], "text"),
                        GetSQLValueString($_POST['FatherSurName'], "text"),
+                       GetSQLValueString($_POST['FatherPersonID'], "text"),
                        GetSQLValueString($_POST['Father_tel'], "text"),
                        GetSQLValueString($_POST['Fatheroccupa'], "text"),
                        GetSQLValueString($_POST['FatherSalary'], "text"),
                        GetSQLValueString($_POST['MatherPrefixCode'], "int"),
                        GetSQLValueString($_POST['Mathername'], "text"),
                        GetSQLValueString($_POST['Mathersurname'], "text"),
+                       GetSQLValueString($_POST['MatherPersonID'], "text"),
                        GetSQLValueString($_POST['Mather_tel'], "text"),
                        GetSQLValueString($_POST['Matheroccupa'], "text"),
                        GetSQLValueString($_POST['MatherSalary'], "text"),
                        GetSQLValueString($_POST['ParentPrefixCode'], "int"),
                        GetSQLValueString($_POST['ParentName'], "text"),
                        GetSQLValueString($_POST['ParentSurname'], "text"),
+                       GetSQLValueString($_POST['ParentPersonID'], "text"),
                        GetSQLValueString($_POST['Parent_tel'], "text"),
                        GetSQLValueString($_POST['Parentoccupa'], "text"),
                        GetSQLValueString($_POST['ParentSalary'], "text"));
@@ -216,6 +219,10 @@ do {
         <td>นามสกุล-บิดา</td>
         <td><input name="FatherSurName" type="text" class="form-control" id="FatherSurName" placeholder="ใส่นามสกุล-บิดา"></td>
       </tr>
+      <tr>
+        <td>รหัสประชาชน-บิดา</td>
+        <td><input name="FatherPersonID" type="text" class="form-control" id="FatherPersonID" placeholder="ใส่นามสกุล-บิดา" maxlength="13"></td>
+      </tr>
       
       
      
@@ -259,6 +266,11 @@ do {
       </tr>
       
       <tr>
+        <td>รหัสประชาชน-มารดา</td>
+        <td><input name="MatherPersonID" type="text" class="form-control" id="MatherPersonID" placeholder="ใส่นามสกุล-มารดา" maxlength="13"></td>
+      </tr>
+      
+      <tr>
         <td>เบอร์โทรศัพท์-มารดา</td>
         <td><input name="Mather_tel" type="text" class="form-control" id="Mather_tel" placeholder="ใส่เบอร์โทรศัพท์-มารดา"></td>
       </tr>
@@ -294,6 +306,11 @@ do {
       <tr>
         <td>นามสกุล-ผู้ปกครอง</td>
         <td><input name="ParentSurname" type="text" class="form-control" id="ParentSurname" placeholder="ใส่นามสกุล-ผู้ปกครอง"></td>
+      </tr>
+      
+       <tr>
+        <td>รหัสประชาชน-ผู้ปกครอง</td>
+        <td><input name="ParentPersonID" type="text" class="form-control" id="ParentPersonID" placeholder="ใส่นามสกุล-บิดา" maxlength="13"></td>
       </tr>
       
       <tr>

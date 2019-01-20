@@ -88,7 +88,24 @@ if (isset($_GET['studentID'])) {
 $query_studentdata = sprintf("SELECT a.*,b.*,c.*,d.*,e.*,f.*,g.*,h.* FROM tbl_student as a, tbl_prefix as b,tbl_gender as c,tbl_blger as d,tbl_religion as e,tbl_group as f,tbl_studentstatus as g,tbl_classlevel as h WHERE a.studentID = %s and a.PrefixCode=b.PrefixCode and a.GenderCode=c.GenderCode and a.blgerid=d.blgerid and a.Religionid=e.Religionid and a.groupid=f.groupid and a.statusid=g.statusid and f.classlevelid=h.classlevelid", GetSQLValueString($colname_studentdata, "text"));
 $studentdata = mysqli_query($stusystem, $query_studentdata) or die(mysqli_error($stusystem));
 $row_studentdata = mysqli_fetch_assoc($studentdata);
-$totalRows_studentdata = mysqli_num_rows($studentdata);$colname_studentdata = "-1";
+$totalRows_studentdata = "-1";
+if (isset($_GET['studentID'])) {
+  $totalRows_studentdata = $_GET['studentID'];
+}
+$colname_studentdata = "-1";
+
+$colname_studentdata = "-1";
+
+//42320819($database_stusystem, $stusystem);
+$query_studentdata = sprintf("SELECT a.*,b.* FROM tbl_student as a, tbl_prefix as b WHERE a.studentID = %s and a.PrefixCode=b.PrefixCode ", GetSQLValueString($colname_studentdata, "text"));
+$studentdata = mysqli_query($stusystem, $query_studentdata) or die(mysqli_error($stusystem));
+$row_studentdata = mysqli_fetch_assoc($studentdata);
+$totalRows_studentdata = "-1";
+if (isset($_GET['studentID'])) {
+  $totalRows_studentdata = $_GET['studentID'];
+}
+
+$colname_studentdata = "-1";
 if (isset($_GET['studentID'])) {
   $colname_studentdata = $_GET['studentID'];
 }
@@ -170,6 +187,11 @@ $page_active= 3;
       </tr>
       
       <tr>
+        <td>รหัสประชาชน-บิดา</td>
+        <td><?php echo $row_studentparent['FatherPersonID']; ?></td>
+      </tr>
+      
+      <tr>
         <td>เบอร์โทรศัพท์-บิดา </td>
         <td><?php echo $row_studentparent['Father_tel']; ?></td>
       </tr>
@@ -190,6 +212,11 @@ $page_active= 3;
 			}
 		 ?>
           <?php } while ($row_Matherprefix = mysqli_fetch_assoc($Matherprefix)); ?> <?php echo $row_studentparent['Mathername']; ?> <?php echo $row_studentparent['Mathersurname']; ?></td>
+      </tr>
+      
+       <tr>
+        <td>รหัสประชาชน-บิดา</td>
+        <td><?php echo $row_studentparent['MatherPersonID']; ?></td>
       </tr>
       
       <tr>
@@ -214,6 +241,12 @@ $page_active= 3;
 		  ?>
           <?php } while ($row_parentprefix = mysqli_fetch_assoc($parentprefix)); ?> <?php echo $row_studentparent['ParentName']; ?> <?php echo $row_studentparent['ParentSurname']; ?></td>
       </tr>
+      
+       <tr>
+        <td>รหัสประชาชน-ผู้ปกครอง</td>
+        <td><?php echo $row_studentparent['ParentPersonID']; ?></td>
+      </tr>
+      
      
       <tr>
         <td>เบอร์โทรศัพท์ผู้ปกครอง</td>

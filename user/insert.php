@@ -90,9 +90,9 @@ if (isset($_SERVER['QUERY_STRING'])) {
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "insertuserdata")) {
 	
-			if($_POST['password']==$_POST['repassword']){	
-			
-			
+	if($_POST['password']==$_POST['repassword']){	
+	
+	
   $insertSQL = sprintf("INSERT INTO tbl_user (username, password, user_name, usertypeid) VALUES (%s, %s, %s, %s)",
                        GetSQLValueString($_POST['username'], "text"),
                        GetSQLValueString(md5($_POST['password']), "text"),
@@ -108,14 +108,13 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "insertuserdata")) {
     $insertGoTo .= $_SERVER['QUERY_STRING'];
   }
   header(sprintf("Location: %s", $insertGoTo));
-  
-  }else{
+}
+
+}else{
 	echo "<script>alert('รหัสผิดพลาดโปรดแก้ไข')</script>";
 	
 }
-  
-  
-}
+
 
 
 

@@ -83,22 +83,6 @@ global $stusystem;
 }
 }
 
-//42320819($database_stusystem, $stusystem);
-
-
-
-//42320819($database_stusystem, $stusystem);
-$query_class = "SELECT * FROM tbl_classlevel";
-$class = mysqli_query($stusystem, $query_class) or die(mysqli_error($stusystem));
-$row_class = mysqli_fetch_assoc($class);
-$totalRows_class = mysqli_num_rows($class);
-
-//42320819($database_stusystem, $stusystem);
-$query_teacher = "SELECT a.*,b.* FROM tbl_teacher as a , tbl_prefix as b WHERE a.PrefixCode=b.PrefixCode ORDER BY a.name DESC";
-$teacher = mysqli_query($stusystem, $query_teacher) or die(mysqli_error($stusystem));
-$row_teacher = mysqli_fetch_assoc($teacher);
-$totalRows_teacher = mysqli_num_rows($teacher);
-
 $editFormAction = $_SERVER['PHP_SELF'];
 if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
@@ -121,6 +105,28 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "insertuserdata")) {
   }
   header(sprintf("Location: %s", $insertGoTo));
 }
+
+//42320819($database_stusystem, $stusystem);
+
+
+
+//42320819($database_stusystem, $stusystem);
+$query_class = "SELECT * FROM tbl_classlevel";
+$class = mysqli_query($stusystem, $query_class) or die(mysqli_error($stusystem));
+$row_class = mysqli_fetch_assoc($class);
+$totalRows_class = mysqli_num_rows($class);
+
+//42320819($database_stusystem, $stusystem);
+$query_teacher = "SELECT a.*,b.* FROM tbl_teacher as a , tbl_prefix as b WHERE a.PrefixCode=b.PrefixCode ORDER BY a.name DESC";
+$teacher = mysqli_query($stusystem, $query_teacher) or die(mysqli_error($stusystem));
+$row_teacher = mysqli_fetch_assoc($teacher);
+$totalRows_teacher = mysqli_num_rows($teacher);
+
+//42320819($database_stusystem, $stusystem);
+$query_academicyear = "SELECT * FROM tbl_academicyears";
+$academicyear = mysqli_query($stusystem, $query_academicyear) or die(mysqli_error($stusystem));
+$row_academicyear = mysqli_fetch_assoc($academicyear);
+$totalRows_academicyear = mysqli_num_rows($academicyear);
 ?>
 <!doctype html>
 <html>
@@ -200,7 +206,8 @@ do {
 ?>
         </select>&nbsp;</td>
       </tr>
-      </tr>
+      
+      
       
      
       <td colspan="2" style="text-align:center;"><input name="inserstudentdata" type="submit" id="inserstudentdata" value="เพิ่มข้อมูลห้องเรียน" class="btn btn-success" ></td>
@@ -218,6 +225,8 @@ do {
 </html>
 <?php
 mysqli_free_result($teacher);
+
+mysqli_free_result($academicyear);
 
 mysqli_free_result($class);
 ?>

@@ -86,9 +86,9 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "insertstudentaddress")) {
-  $updateSQL = sprintf("UPDATE tbl_address SET PersonID=%s, Homeid=%s, moo=%s, street=%s, DISTRICT_ID=%s, AMPHUR_ID=%s, PROVINCE_ID=%s, ZipCode=%s, stu_gps=%s WHERE studentID=%s",
+  $updateSQL = sprintf("UPDATE tbl_address SET PersonID=%s, HouseNo=%s, moo=%s, street=%s, DISTRICT_ID=%s, AMPHUR_ID=%s, PROVINCE_ID=%s, ZipCode=%s, stu_gps=%s WHERE studentID=%s AND Homeid=%s",
                        GetSQLValueString($_POST['PersonID'], "text"),
-                       GetSQLValueString($_POST['Homeid'], "text"),
+                       GetSQLValueString($_POST['HouseNo'], "text"),
                        GetSQLValueString($_POST['moo'], "text"),
                        GetSQLValueString($_POST['street'], "text"),
                        GetSQLValueString($_POST['district'], "int"),
@@ -96,7 +96,8 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "insertstudentaddres
                        GetSQLValueString($_POST['province'], "int"),
                        GetSQLValueString($_POST['ZipCode'], "text"),
                        GetSQLValueString($_POST['stu_gps'], "text"),
-                       GetSQLValueString($_POST['StudentID'], "text"));
+                       GetSQLValueString($_POST['StudentID'], "text"),
+                       GetSQLValueString($_POST['Homeid'], "text"));
 
   //mysql_select_db($database_stusystem, $stusystem);
   $Result1 = mysqli_query($stusystem, $updateSQL) or die(mysqli_error($stusystem));
@@ -174,7 +175,7 @@ $totalRows_distic = mysqli_num_rows($distic);
 
 <form action="<?php echo $editFormAction; ?>" method="POST" enctype="multipart/form-data" name="insertstudentaddress" id="insertstudentaddress">
 <div class="container">
- <a href="index.php" class="btn btn-primary">กลับไปหน้าข้อมูลที่อยู่นักเรียน</a> 
+ <a href="index.php?studentID=<?php echo $row_student['studentID']; ?>" class="btn btn-primary">กลับไปหน้าข้อมูลที่อยู่นักเรียน</a> 
  <h2 style="text-align:center;">ปรับปรุงข้อมูลที่อยู่นักเรียน</h2>
      
   <table class="table table-condensed">
@@ -198,8 +199,12 @@ $totalRows_distic = mysqli_num_rows($distic);
       </tr>
       
       <tr>
+        <td>รหัสประจำบ้าน</td>
+        <td><input name="Homeid" type="text" autofocus required="required" class="form-control" id="Homeid" placeholder="ใส่รหัสบ้าน" value="<?php echo $row_studentaddress['Homeid']; ?>" maxlength="11" readonly></td>
+      </tr>
+      <tr>
         <td>เลขที่บ้าน</td>
-        <td><input name="Homeid" type="text" autofocus required="required" class="form-control" id="Homeid" placeholder="ใส่บ้านเลขที่" value="<?php echo $row_studentaddress['Homeid']; ?>"></td>
+        <td><input name="HouseNo" type="text" autofocus required="required" class="form-control" id="HouseNo" placeholder="ใส่บ้านเลขที่" value="<?php echo $row_studentaddress['HouseNo']; ?>"></td>
       </tr>
       <tr>
         <td>หมู่</td>

@@ -106,8 +106,6 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "insertuserdata")) {
   header(sprintf("Location: %s", $updateGoTo));
 }
 
-
-
 //42320819($database_stusystem, $stusystem);
 $query_class = "SELECT * FROM tbl_classlevel";
 $class = mysqli_query($stusystem, $query_class) or die(mysqli_error($stusystem));
@@ -129,6 +127,12 @@ $query_teacher = "SELECT a.*,b.* FROM tbl_teacher as a , tbl_prefix as b WHERE a
 $teacher = mysqli_query($stusystem, $query_teacher) or die(mysqli_error($stusystem));
 $row_teacher = mysqli_fetch_assoc($teacher);
 $totalRows_teacher = mysqli_num_rows($teacher);
+
+//42320819($database_stusystem, $stusystem);
+$query_AcademicYears = "SELECT * FROM tbl_academicyears";
+$AcademicYears = mysqli_query($stusystem, $query_AcademicYears) or die(mysqli_error($stusystem));
+$row_AcademicYears = mysqli_fetch_assoc($AcademicYears);
+$totalRows_AcademicYears = mysqli_num_rows($AcademicYears);
 ?>
 <!doctype html>
 <html>
@@ -208,7 +212,7 @@ do {
 ?>
         </select>&nbsp;</td>
       </tr>
-      </tr>
+      
       
      
       <td colspan="2" style="text-align:center;"><input name="inserstudentdata" type="submit" id="inserstudentdata" value="ปรับปรุงข้อมูลห้องเรียน" class="btn btn-success" ></td>
@@ -226,6 +230,8 @@ do {
 </html>
 <?php
 mysqli_free_result($teacher);
+
+mysqli_free_result($AcademicYears);
 
 mysqli_free_result($class);
 

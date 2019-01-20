@@ -91,17 +91,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "insertstudentdata")) {
 	
 	
-	if($_POST['student_Birthdate']!=''){
-		$date = $_POST['student_Birthdate'];
-		$show=explode("-",$date);
-		$date1 = $show[0];
-		$date2 = $show[1];
-		$date3 = $show[2]-543;
-		$dateval =  $date3."/".$date2."/".$date1;
-		
-		}else{
-			$dateval= "0000/00/00";
-			}
+	
 	
 	
   $insertSQL = sprintf("INSERT INTO tbl_student (studentID, PersonID, PrefixCode, student_name, student_surname, student_img, GenderCode, blgerid, student_Birthdate, Student_Nickname, Religionid, GradeLevel, groupid, EntryAcademicYear, AcademicYears, Semester, statusid, stu_tel) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
@@ -113,7 +103,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "insertstudentdata")
                        GetSQLValueString(dwUpload($_FILES['fileField']), "text"),
                        GetSQLValueString($_POST['GenderCode'], "int"),
                        GetSQLValueString($_POST['blgerid'], "int"),
-                       GetSQLValueString($dateval, "date"),
+                       GetSQLValueString($_POST['student_Birthdate'], "date"),
                        GetSQLValueString($_POST['student_Nickname'], "text"),
                        GetSQLValueString($_POST['Religionid'], "int"),
                        GetSQLValueString($_POST['classlevelid'], "int"),

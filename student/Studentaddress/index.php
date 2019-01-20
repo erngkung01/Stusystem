@@ -142,8 +142,12 @@ $page_active= 2;
     
     <tbody>
       <tr>
-        <td>บ้านเลขที่</td>
+        <td>รหัสประจำบ้าน</td>
         <td><?php echo $row_studentaddress['Homeid']; ?></td>
+        </tr>
+      <tr>
+        <td>บ้านเลขที่</td>
+        <td><?php echo $row_studentaddress['HouseNo']; ?></td>
         </tr>
       <tr>
         <td>หมู่</td>

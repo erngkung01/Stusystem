@@ -88,18 +88,14 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
-
-
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "updateuserdata")) {
 	
-	if($_POST['password']==$_POST['repassword']){
+	if($_POST['password']==$_POST['repassword']){	
 	
-  $updateSQL = sprintf("UPDATE tbl_user SET username=%s, password=%s WHERE userid=%s",
-                       GetSQLValueString($_POST['username'], "text"),
+	
+  $updateSQL = sprintf("UPDATE tbl_user SET password=%s WHERE username=%s",
                        GetSQLValueString(md5($_POST['password']), "text"),
-                       GetSQLValueString($_POST['userid'], "int"));
-					   
-	}
+                       GetSQLValueString($_POST['username'], "text"));
 
   //mysql_select_db($database_stusystem, $stusystem);
   $Result1 = mysqli_query($stusystem, $updateSQL) or die(mysqli_error($stusystem));
@@ -111,6 +107,15 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "updateuserdata")) {
   }
   header(sprintf("Location: %s", $updateGoTo));
 }
+
+}else{
+	echo "<script>alert('รหัสผิดพลาดโปรดแก้ไข')</script>";
+	
+}
+
+
+
+
 
 
 //42320819($database_stusystem, $stusystem);
