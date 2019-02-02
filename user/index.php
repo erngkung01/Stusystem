@@ -207,8 +207,8 @@ do {
         <td><?php echo $row_user['user_name']; ?>&nbsp;</td>
         <td><?php echo $row_user['username']; ?>&nbsp;</td>
         <td><?php echo $row_user['usertype_name']; ?>&nbsp;</td>
-        <td><a href="update.php?userid=<?php echo $row_user['userid']; ?>" class="btn btn-warning">แก้ไขข้อมูล</a></td>
-        <td><a href="delete.php?userid=<?php echo $row_user['userid']; ?>" class="btn btn-danger" onclick="return confirm('คุณแน่ใจที่จะลบข้อมูลนี้')">ลบ</a></td>
+        <td><a href="update.php?username=<?php echo $row_user['username']; ?>" class="btn btn-warning">แก้ไขข้อมูล</a></td>
+        <td><a href="delete.php?username=<?php echo $row_user['username']; ?>" class="btn btn-danger" onclick="return confirm('คุณแน่ใจที่จะลบข้อมูลนี้')">ลบ</a></td>
         
         </tr>
       <?php } while ($row_user = mysqli_fetch_assoc($user)); ?>

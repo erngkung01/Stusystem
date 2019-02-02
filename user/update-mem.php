@@ -160,7 +160,7 @@ $totalRows_user = mysqli_num_rows($user);
       </tr>
       <tr>
         <td>รหัสผ่าน</td>
-        <td><a href="updatepass.php?userid=<?php echo $row_user['userid']; ?>" class="btn btn-warning">แก้ไขรหัสผ่าน</a></td>
+        <td><a href="updatepass.php?username=<?php echo $row_user['username']; ?>" class="btn btn-warning">แก้ไขรหัสผ่าน</a></td>
       </tr>
        
        

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <info>
 	<infoitem key="UD_usertype" value="name:usertypeid;datatype:253,name:usertype_name;datatype:253" />
-	<infoitem key="UD_user" value="name:userid;datatype:3,name:username;datatype:253,name:password;datatype:253,name:user_name;datatype:253,name:usertypeid;datatype:253" />
+	<infoitem key="UD_user" value="name:username;datatype:253,name:password;datatype:253,name:user_name;datatype:253,name:usertypeid;datatype:253" />
 </info>

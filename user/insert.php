@@ -110,9 +110,11 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "insertuserdata")) {
   header(sprintf("Location: %s", $insertGoTo));
 }
 
-}else{
+else{
 	echo "<script>alert('รหัสผิดพลาดโปรดแก้ไข')</script>";
 	
+}
+
 }
 
 

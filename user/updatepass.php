@@ -106,13 +106,13 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "updateuserdata")) {
     $updateGoTo .= $_SERVER['QUERY_STRING'];
   }
   header(sprintf("Location: %s", $updateGoTo));
-}
-
 }else{
 	echo "<script>alert('รหัสผิดพลาดโปรดแก้ไข')</script>";
 	
 }
 
+
+}
 
 
 
@@ -125,11 +125,11 @@ $row_usertype = mysqli_fetch_assoc($usertype);
 $totalRows_usertype = mysqli_num_rows($usertype);
 
 $colname_user = "-1";
-if (isset($_GET['userid'])) {
-  $colname_user = $_GET['userid'];
+if (isset($_GET['username'])) {
+  $colname_user = $_GET['username'];
 }
 //42320819($database_stusystem, $stusystem);
-$query_user = sprintf("SELECT * FROM tbl_user WHERE userid = %s", GetSQLValueString($colname_user, "int"));
+$query_user = sprintf("SELECT * FROM tbl_user WHERE username = %s", GetSQLValueString($colname_user, "text"));
 $user = mysqli_query($stusystem, $query_user) or die(mysqli_error($stusystem));
 $row_user = mysqli_fetch_assoc($user);
 $totalRows_user = mysqli_num_rows($user);

@@ -112,11 +112,11 @@ $row_usertype = mysqli_fetch_assoc($usertype);
 $totalRows_usertype = mysqli_num_rows($usertype);
 
 $colname_user = "-1";
-if (isset($_GET['userid'])) {
-  $colname_user = $_GET['userid'];
+if (isset($_GET['username'])) {
+  $colname_user = $_GET['username'];
 }
 //42320819($database_stusystem, $stusystem);
-$query_user = sprintf("SELECT * FROM tbl_user WHERE userid = %s", GetSQLValueString($colname_user, "int"));
+$query_user = sprintf("SELECT * FROM tbl_user WHERE username = %s", GetSQLValueString($colname_user, "text"));
 $user = mysqli_query($stusystem, $query_user) or die(mysqli_error($stusystem));
 $row_user = mysqli_fetch_assoc($user);
 $totalRows_user = mysqli_num_rows($user);
@@ -165,7 +165,7 @@ $totalRows_user = mysqli_num_rows($user);
       </tr>
       <tr>
       <td>รหัสผ่าน</td>
-      <td><a href="updatepass.php?userid=<?php echo $row_user['userid']; ?>" class="btn btn-warning">แก้ไขรหัสผ่าน</a></td>
+      <td><a href="updatepass.php?username=<?php echo $row_user['username']; ?>" class="btn btn-warning">แก้ไขรหัสผ่าน</a></td>
       </tr>
        <tr>
         <td>ระดับสมาชิก</td>
