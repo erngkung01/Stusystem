@@ -2,8 +2,8 @@
 if (!isset($_SESSION)) {
   session_start();
 }
-$MM_authorizedUsers = "";
-$MM_donotCheckaccess = "true";
+$MM_authorizedUsers = "111";
+$MM_donotCheckaccess = "false";
 
 // *** Restrict Access To Page: Grant or deny access to this page
 function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
@@ -24,7 +24,7 @@ function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) {
     if (in_array($UserGroup, $arrGroups)) { 
       $isValid = true; 
     } 
-    if (($strUsers == "") && true) { 
+    if (($strUsers == "") && false) { 
       $isValid = true; 
     } 
   } 
@@ -78,106 +78,40 @@ if(isset($_POST["upload"]))
 	$statusid = mysqli_real_escape_string($connect, $data[15]);
 	$stu_tel = mysqli_real_escape_string($connect, $data[16]);
 	$Homeid = mysqli_real_escape_string($connect, $data[17]);
-	$moo = mysqli_real_escape_string($connect, $data[18]);
-	$street = mysqli_real_escape_string($connect, $data[19]);
-	$DISTRICT_ID = mysqli_real_escape_string($connect, $data[20]);
-	$AMPHUR_ID = mysqli_real_escape_string($connect, $data[21]);
-	$PROVINCE_ID = mysqli_real_escape_string($connect, $data[22]);
-	$ZipCode = mysqli_real_escape_string($connect, $data[23]);
-	$stu_gps = mysqli_real_escape_string($connect, $data[24]);
-	$FatherPrefixCode = mysqli_real_escape_string($connect, $data[25]);
-	$FatherName = mysqli_real_escape_string($connect, $data[26]);
-	$FatherSurName = mysqli_real_escape_string($connect, $data[27]);
-	$Father_tel = mysqli_real_escape_string($connect, $data[28]);
-	$Fatheroccupa = mysqli_real_escape_string($connect, $data[29]);
-	$FatherSalary = mysqli_real_escape_string($connect, $data[30]);
-	$MatherPrefixCode = mysqli_real_escape_string($connect, $data[31]);
-	$Mathername = mysqli_real_escape_string($connect, $data[32]);
-	$Mathersurname = mysqli_real_escape_string($connect, $data[33]);
-	$Mather_tel = mysqli_real_escape_string($connect, $data[34]);
-	$Matheroccupa = mysqli_real_escape_string($connect, $data[35]);
-	$MatherSalary = mysqli_real_escape_string($connect, $data[36]);
-	$ParentPrefixCode = mysqli_real_escape_string($connect, $data[37]);
-	$ParentName = mysqli_real_escape_string($connect, $data[38]);
-	$ParentSurname = mysqli_real_escape_string($connect, $data[39]);
-	$Parent_tel = mysqli_real_escape_string($connect, $data[40]);
-	$Parentoccupa = mysqli_real_escape_string($connect, $data[41]);
-	$ParentSalary = mysqli_real_escape_string($connect, $data[42]);
+	$HouseNo = mysqli_real_escape_string($connect, $data[18]);
+	$moo = mysqli_real_escape_string($connect, $data[19]);
+	$street = mysqli_real_escape_string($connect, $data[20]);
+	$DISTRICT_ID = mysqli_real_escape_string($connect, $data[21]);
+	$AMPHUR_ID = mysqli_real_escape_string($connect, $data[22]);
+	$PROVINCE_ID = mysqli_real_escape_string($connect, $data[23]);
+	$ZipCode = mysqli_real_escape_string($connect, $data[24]);
+	$stu_gps = mysqli_real_escape_string($connect, $data[25]);
+	$FatherPrefixCode = mysqli_real_escape_string($connect, $data[26]);
+	$FatherName = mysqli_real_escape_string($connect, $data[27]);
+	$FatherSurName = mysqli_real_escape_string($connect, $data[28]);
+	$FatherPersonID =  mysqli_real_escape_string($connect, $data[29]);
+	$Father_tel = mysqli_real_escape_string($connect, $data[30]);
+	$Fatheroccupa = mysqli_real_escape_string($connect, $data[31]);
+	$FatherSalary = mysqli_real_escape_string($connect, $data[32]);
+	$MatherPrefixCode = mysqli_real_escape_string($connect, $data[33]);
+	$Mathername = mysqli_real_escape_string($connect, $data[34]);
+	$Mathersurname = mysqli_real_escape_string($connect, $data[35]);
+	$MatherPersonID = mysqli_real_escape_string($connect, $data[36]);
+	$Mather_tel = mysqli_real_escape_string($connect, $data[37]);
+	$Matheroccupa = mysqli_real_escape_string($connect, $data[38]);
+	$MatherSalary = mysqli_real_escape_string($connect, $data[39]);
+	$ParentPrefixCode = mysqli_real_escape_string($connect, $data[40]);
+	$ParentName = mysqli_real_escape_string($connect, $data[41]);
+	$ParentSurname = mysqli_real_escape_string($connect, $data[42]);
+	$ParentPersonID = mysqli_real_escape_string($connect, $data[43]);
+	$Parent_tel = mysqli_real_escape_string($connect, $data[44]);
+	$Parentoccupa = mysqli_real_escape_string($connect, $data[45]);
+	$ParentSalary = mysqli_real_escape_string($connect, $data[46]);
 	
     
    
    
-    $sql = "SELECT studentID FROM tbl_student  WHERE studentID = ".$studentID." ";
-		$result = mysqli_query($connect, $sql);
-		
-	if (mysqli_num_rows($result) > 0) {
-		// อัปเดตข้อมูล
-	
-	$query = "
-     UPDATE tbl_student 
-     SET  PersonID = '$PersonID', 
-     PrefixCode = '$PrefixCode',
-	 student_name = '$student_name',
-	 student_surname = '$student_surname',
-	 GenderCode  = '$GenderCode',
-	 blgerid = '$blgerid',
-	 student_Birthdate = '$student_Birthdate',
-	 Student_Nickname = '$Student_Nickname',
-	 Religionid = '$Religionid',
-	 GradeLevel = '$GradeLevel',
-	 groupid = '$groupid',
-	 EntryAcademicYear = '$EntryAcademicYear',
-	 AcademicYears = '$AcademicYears',
-	 Semester = '$Semester',
-	 statusid = '$statusid',
-	 stu_tel = '$stu_tel'
-     WHERE studentID = '$studentID'
-    ";
-    mysqli_query($connect, $query);
-	
-	$query2 = "
-     UPDATE tbl_address 
-     SET  PersonID = '$PersonID', 
-     Homeid = '$Homeid',
-	 moo = '$moo',
-	 street = '$street',
-	 DISTRICT_ID = '$DISTRICT_ID'
-	 AMPHUR_ID = '$AMPHUR_ID',
-	 PROVINCE_ID = '$PROVINCE_ID',
-	 ZipCode = '$ZipCode',
-	 stu_gps = '$stu_gps'
-     WHERE studentID = '$studentID'
-    ";
-	mysqli_query($connect, $query2);
-	
-	$query3 = "
-     UPDATE tbl_parent
-     SET  PersonID = '$PersonID', 
-     FatherPrefixCode = '$FatherPrefixCode',
-	 FatherName = '$FatherName',
-	 FatherSurName = '$FatherSurName',
-	 Father_tel = '$Father_tel',
-	 Fatheroccupa = '$Fatheroccupa',
-	 FatherSalary = '$FatherSalary',
-	 MatherPrefixCode = '$MatherPrefixCode',
-	 Mathername = '$Mathername',
-	 Mathersurname = '$Mathersurname',
-	 Mather_tel = '$Mather_tel',
-	 Matheroccupa = '$Matheroccupa',
-	 MatherSalary = '$MatherSalary',
-	 ParentPrefixCode = '$ParentPrefixCode',
-	 ParentName = '$ParentName',
-	 ParentSurname = '$ParentSurname',
-	 Parent_tel = '$Parent_tel',
-	 Parentoccupa = '$Parentoccupa',
-	 ParentSalary = '$ParentSalary'
-     WHERE studentID = '$studentID'
-    ";
-	mysqli_query($connect, $query3);
-	
-	
-	}else{
-	//เพิ่มข้อมูล
+   
 		
 		$query = "
     INSERT INTO tbl_student (studentID, PersonID, PrefixCode, student_name, student_surname, GenderCode, blgerid, student_Birthdate, Student_Nickname, Religionid, GradeLevel, groupid, EntryAcademicYear, Semester, statusid, stu_tel )
@@ -186,20 +120,20 @@ VALUES ('$studentID', '$PersonID', '$PrefixCode', '$student_name', '$student_sur
     mysqli_query($connect, $query);
 	
 	$query2 = "
-    INSERT INTO tbl_address (studentID, PersonID, Homeid, moo, street, DISTRICT_ID, AMPHUR_ID, PROVINCE_ID, ZipCode, stu_gps)
-VALUES ('$studentID', '$PersonID', '$Homeid', '$moo', '$street', '$DISTRICT_ID', '$AMPHUR_ID', '$PROVINCE_ID', '$ZipCode', '$stu_gps' )
+    INSERT INTO tbl_address (studentID, PersonID, Homeid, HouseNo, moo, street, DISTRICT_ID, AMPHUR_ID, PROVINCE_ID, ZipCode, stu_gps)
+VALUES ('$studentID', '$PersonID', '$Homeid', '$HouseNo', '$moo', '$street', '$DISTRICT_ID', '$AMPHUR_ID', '$PROVINCE_ID', '$ZipCode', '$stu_gps' )
     ";
     mysqli_query($connect, $query2);
 	
 	
 	$query3 = "
-    INSERT INTO tbl_parent (studentID, PersonID, FatherPrefixCode, FatherName, FatherSurName, Father_tel, Fatheroccupa, FatherSalary, MatherPrefixCode, Mathername, Mathersurname, Mather_tel, Matheroccupa, MatherSalary, ParentPrefixCode, ParentName, ParentSurname, Parent_tel, Parentoccupa, ParentSalary )
-VALUES ('$studentID', '$PersonID', '$FatherPrefixCode', '$FatherName', '$FatherSurName', '$Father_tel', '$Fatheroccupa', '$FatherSalary', '$MatherPrefixCode', '$Mathername', '$Mathersurname', '$Mather_tel', '$Matheroccupa', '$MatherSalary', '$ParentPrefixCode', '$ParentName', '$ParentSurname', '$Parent_tel', '$Parentoccupa', '$ParentSalary'  )
+    INSERT INTO tbl_parent (studentID, PersonID, FatherPrefixCode, FatherName, FatherSurName, FatherPersonID, Father_tel, Fatheroccupa, FatherSalary, MatherPrefixCode, Mathername, Mathersurname, MatherPersonID, Mather_tel, Matheroccupa, MatherSalary, ParentPrefixCode, ParentName, ParentSurname, 	ParentPersonID, Parent_tel, Parentoccupa, ParentSalary )
+VALUES ('$studentID', '$PersonID', '$FatherPrefixCode', '$FatherName', '$FatherSurName', '$FatherPersonID', '$Father_tel', '$Fatheroccupa', '$FatherSalary', '$MatherPrefixCode', '$Mathername', '$Mathersurname', '$MatherPersonID', '$Mather_tel', '$Matheroccupa', '$MatherSalary', '$ParentPrefixCode', '$ParentName', '$ParentSurname', '$ParentPersonID', '$Parent_tel', '$Parentoccupa', '$ParentSalary'  )
     ";
     mysqli_query($connect, $query3);
 		
 		
-	}
+	
 	
 	
    }

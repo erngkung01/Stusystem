@@ -86,11 +86,12 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "updatestudentparent")) {
-  $updateSQL = sprintf("UPDATE tbl_parent SET PersonID=%s, FatherPrefixCode=%s, FatherName=%s, FatherSurName=%s, Father_tel=%s, Fatheroccupa=%s, FatherSalary=%s, MatherPrefixCode=%s, Mathername=%s, Mathersurname=%s, MatherPersonID=%s, Mather_tel=%s, Matheroccupa=%s, MatherSalary=%s, ParentPrefixCode=%s, ParentName=%s, ParentSurname=%s, ParentPersonID=%s, Parent_tel=%s, Parentoccupa=%s, ParentSalary=%s WHERE studentID=%s AND FatherPersonID=%s",
+  $updateSQL = sprintf("UPDATE tbl_parent SET PersonID=%s, FatherPrefixCode=%s, FatherName=%s, FatherSurName=%s, FatherPersonID=%s, Father_tel=%s, Fatheroccupa=%s, FatherSalary=%s, MatherPrefixCode=%s, Mathername=%s, Mathersurname=%s, MatherPersonID=%s, Mather_tel=%s, Matheroccupa=%s, MatherSalary=%s, ParentPrefixCode=%s, ParentName=%s, ParentSurname=%s, ParentPersonID=%s, Parent_tel=%s, Parentoccupa=%s, ParentSalary=%s WHERE studentID=%s",
                        GetSQLValueString($_POST['PersonID'], "text"),
                        GetSQLValueString($_POST['FatherPrefixCode'], "int"),
                        GetSQLValueString($_POST['FatherName'], "text"),
                        GetSQLValueString($_POST['FatherSurName'], "text"),
+                       GetSQLValueString($_POST['FatherPersonID'], "text"),
                        GetSQLValueString($_POST['Father_tel'], "text"),
                        GetSQLValueString($_POST['Fatheroccupa'], "text"),
                        GetSQLValueString($_POST['FatherSalary'], "text"),
@@ -108,8 +109,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "updatestudentparent
                        GetSQLValueString($_POST['Parent_tel'], "text"),
                        GetSQLValueString($_POST['Parentoccupa'], "text"),
                        GetSQLValueString($_POST['ParentSalary'], "text"),
-                       GetSQLValueString($_POST['StudentID'], "text"),
-                       GetSQLValueString($_POST['FatherPersonID'], "text"));
+                       GetSQLValueString($_POST['StudentID'], "text"));
 
   //mysql_select_db($database_stusystem, $stusystem);
   $Result1 = mysqli_query($stusystem, $updateSQL) or die(mysqli_error($stusystem));
@@ -232,7 +232,7 @@ do {
       
       <tr>
         <td>รหัสประชาชน-บิดา</td>
-        <td><input name="FatherPersonID" type="text" class="form-control" id="FatherPersonID" placeholder="รหัสประชาชน-บิดา" value="<?php echo $row_studentparent['FatherPersonID']; ?>" maxlength="13" readonly></td>
+        <td><input name="FatherPersonID" type="text" required class="form-control" id="FatherPersonID" placeholder="รหัสประชาชน-บิดา" value="<?php echo $row_studentparent['FatherPersonID']; ?>" maxlength="13"></td>
       </tr>
      
       <tr>
@@ -277,7 +277,7 @@ do {
       
        <tr>
         <td>รหัสประชาชน-มารดา</td>
-        <td><input name="MatherPersonID" type="text" class="form-control" id="MatherPersonID" placeholder="รหัสประชาชน-มารดา" value="<?php echo $row_studentparent['MatherPersonID']; ?>"  maxlength="13" readonly></td>
+        <td><input name="MatherPersonID" type="text" required class="form-control" id="MatherPersonID" placeholder="รหัสประชาชน-มารดา" value="<?php echo $row_studentparent['MatherPersonID']; ?>"  maxlength="13"></td>
       </tr>
       
       <tr>
@@ -320,7 +320,7 @@ do {
       
        <tr>
         <td>รหัสประชาชน-ผู้ปกครอง</td>
-        <td><input name="ParentPersonID" type="text" class="form-control" id="ParentPersonID" placeholder="รหัสประชาชน-ผู้ปกครอง" value="<?php echo $row_studentparent['ParentPersonID']; ?>" maxlength="13" readonly></td>
+        <td><input name="ParentPersonID" type="text" required class="form-control" id="ParentPersonID" placeholder="รหัสประชาชน-ผู้ปกครอง" value="<?php echo $row_studentparent['ParentPersonID']; ?>" maxlength="13"></td>
       </tr>
       
       <tr>

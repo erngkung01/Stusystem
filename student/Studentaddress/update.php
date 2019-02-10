@@ -86,8 +86,9 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "insertstudentaddress")) {
-  $updateSQL = sprintf("UPDATE tbl_address SET PersonID=%s, HouseNo=%s, moo=%s, street=%s, DISTRICT_ID=%s, AMPHUR_ID=%s, PROVINCE_ID=%s, ZipCode=%s, stu_gps=%s WHERE studentID=%s AND Homeid=%s",
+  $updateSQL = sprintf("UPDATE tbl_address SET PersonID=%s, Homeid=%s, HouseNo=%s, moo=%s, street=%s, DISTRICT_ID=%s, AMPHUR_ID=%s, PROVINCE_ID=%s, ZipCode=%s, stu_gps=%s WHERE studentID=%s",
                        GetSQLValueString($_POST['PersonID'], "text"),
+                       GetSQLValueString($_POST['Homeid'], "text"),
                        GetSQLValueString($_POST['HouseNo'], "text"),
                        GetSQLValueString($_POST['moo'], "text"),
                        GetSQLValueString($_POST['street'], "text"),
@@ -96,8 +97,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "insertstudentaddres
                        GetSQLValueString($_POST['province'], "int"),
                        GetSQLValueString($_POST['ZipCode'], "text"),
                        GetSQLValueString($_POST['stu_gps'], "text"),
-                       GetSQLValueString($_POST['StudentID'], "text"),
-                       GetSQLValueString($_POST['Homeid'], "text"));
+                       GetSQLValueString($_POST['StudentID'], "text"));
 
   //mysql_select_db($database_stusystem, $stusystem);
   $Result1 = mysqli_query($stusystem, $updateSQL) or die(mysqli_error($stusystem));
@@ -200,7 +200,7 @@ $totalRows_distic = mysqli_num_rows($distic);
       
       <tr>
         <td>รหัสประจำบ้าน</td>
-        <td><input name="Homeid" type="text" autofocus required="required" class="form-control" id="Homeid" placeholder="ใส่รหัสบ้าน" value="<?php echo $row_studentaddress['Homeid']; ?>" maxlength="11" readonly></td>
+        <td><input name="Homeid" type="text" autofocus required="required" class="form-control" id="Homeid" placeholder="ใส่รหัสบ้าน" value="<?php echo $row_studentaddress['Homeid']; ?>" maxlength="11"></td>
       </tr>
       <tr>
         <td>เลขที่บ้าน</td>
