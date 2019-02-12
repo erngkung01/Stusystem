@@ -1,4 +1,4 @@
 <?php
-$web = "https://intaramwittaya.ac.th/stusystem";
+$web = "http://127.0.0.1/stusystem";
 
 ?>

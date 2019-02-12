@@ -135,8 +135,12 @@ $page_active= 8;
   <div class="col-sm-7">
     <h1 style="text-align:center;">ข้อมูลผลงานรางวัล</h1>
     <h3 style="text-align:center;"><?php echo $row_studentdata['PrefixName']; ?> <?php echo $row_studentdata['student_name']; ?>  <?php echo $row_studentdata['student_surname']; ?></h3> <div style="text-align:right">
+      <?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222){ ?>
     <a href="update.php?AwardID=<?php echo $row_studentaward['AwardID']; ?>&studentID=<?php echo $row_studentaward['studentID']; ?>"  class="btn btn-warning">แก้ไขข้อมูลรางวัล</a>
    <a href="delete.php?AwardID=<?php echo $row_studentaward['AwardID']; ?>&studentID=<?php echo $row_student['studentID']; ?>" class="btn btn-danger"onclick="return confirm('คุณแน่ใจที่จะลบข้อมูลนี้')">ลบข้อมูล</a>
+   
+   <?php } ?>
+   
     </div>
     <br>
     <table class="table table-hover">

@@ -160,7 +160,12 @@ $page_active= 8;
     <h1 style="text-align:center;">ระบบจัดการข้อมูลผลงาน/รางวัล นักเรียน</h1>
     <h3 style="text-align:center;"><?php echo $row_studentdata['PrefixName']; ?>  <?php echo $row_studentdata['student_name']; ?> <?php echo $row_studentdata['student_surname']; ?></h3> <div style="text-align:right">
     
+    
+      <?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222){ ?>
+    
     <a href="insert.php?studentID=<?php echo $row_studentdata['studentID']; ?>" class="btn btn-success">เพิ่มผลงาน/รางวัล</a>
+    
+    <?php } ?>
     
     </div>
     
@@ -176,7 +181,9 @@ $page_active= 8;
         <th>ชื่อผลงาน</th>
         <th>ปีการศึกษา</th>
         <th>จัดการข้อมูล</th>
+          <?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222){ ?>
         <th>ลบ</th>
+        <?php } ?>
         </tr>
       </thead>
     
@@ -187,7 +194,10 @@ $page_active= 8;
         <td><?php echo $row_studentaward['AwardName']; ?></td>
         <td><?php echo $row_studentaward['AcademicYears']; ?></td>
         <td><a href="view.php?AwardID=<?php echo $row_studentaward['AwardID']; ?>&studentID=<?php echo $row_studentdata['studentID']; ?>" class="btn btn-primary">จัดการข้อมูล</a></td>
+          <?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222){ ?>
         <td><a href="delete.php?AwardID=<?php echo $row_studentaward['AwardID']; ?>&studentID=<?php echo $row_studentdata['studentID']; ?>" class="btn btn-danger"onclick="return confirm('คุณแน่ใจที่จะลบข้อมูลนี้')">ลบ</a></td>
+        
+        <?php } ?>
         
         </tr>
       <?php } while ($row_studentaward = mysqli_fetch_assoc($studentaward)); ?>

@@ -24,7 +24,7 @@
       <li <?php if($page_active==0){?> class="active" <?php }?>><a href="<?php echo $web; ?>">หน้าแรก</a></li>
         <!--เมนูต่างๆ-->
         
-       <?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222||$_SESSION['MM_UserGroup']==333||$_SESSION['MM_UserGroup']==444){ ?>
+       <?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222||$_SESSION['MM_UserGroup']==333){ ?>
         <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">ระบบจัดการข้อมูล
         <span class="caret"></span></a>

@@ -126,7 +126,14 @@ $page_active= 4;
 <h1 style="text-align:center;">ข้อมูลอาจารย์</h1>
 <h3 style="text-align:center;"><?php echo $row_teacherdata['PrefixName']; ?><?php echo $row_teacherdata['name']; ?>  <?php echo $row_teacherdata['surname']; ?></h3> 
 <div style="text-align:left;"><a href="index.php" class="btn btn-primary">กลับหน้าข้อมูลอาจารย์</a></div>
-<div style="text-align:right"><a href="update.php?TeacherID=<?php echo $row_teacherdata['TeacherID']; ?>" class="btn btn-info">แก้ไขข้อมูลอาจารย์</a>  <a href="delete.php?TeacherID=<?php echo $row_teacherdata['TeacherID']; ?>" class="btn btn-danger"onclick="return confirm('คุณแน่ใจที่จะลบข้อมูลนี้')">ลบข้อมูล</a></div>
+<div style="text-align:right"><a href="update.php?TeacherID=<?php echo $row_teacherdata['TeacherID']; ?>" class="btn btn-info">แก้ไขข้อมูลอาจารย์</a>
+
+<?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222){ ?>
+  
+<a href="delete.php?TeacherID=<?php echo $row_teacherdata['TeacherID']; ?>" class="btn btn-danger"onclick="return confirm('คุณแน่ใจที่จะลบข้อมูลนี้')">ลบข้อมูล</a>
+<?php } ?>
+
+</div>
 <br>
 
   <table class="table table-hover">

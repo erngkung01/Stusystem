@@ -188,8 +188,10 @@ do {
         <th>คุณครูที่รับผิดชอบ</th>
         <th>ระดับชั้น</th>
         <th>รายชื่อนักเรียน</th>
+         <?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222){ ?>
         <th>แก้ไข</th>
         <th>ลบ</th>
+        <?php  }?>
         </tr>
       </thead>
     <tbody>
@@ -200,8 +202,12 @@ do {
         <td><?php echo $row_group['PrefixName']; ?>  <?php echo $row_group['name']; ?> <?php echo $row_group['surname']; ?></td>
         <td><?php echo $row_group['classlevelname']; ?></td>
         <td><a href="grouplist.php?groupid=<?php echo $row_group['groupid']; ?>" class="btn btn-primary">รายชื่อนักเรียน</a></td>
+          <?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222){ ?>
         <td><a href="update.php?groupid=<?php echo $row_group['groupid']; ?>" class="btn btn-warning">แก้ไข</a></td>
         <td><a href="delete.php?groupid=<?php echo $row_group['groupid']; ?>" class="btn btn-danger" onclick="return confirm('คุณแน่ใจที่จะลบข้อมูลนี้')">ลบ</a></td>
+        
+       <?Php } ?>
+       
         </tr>
       <?php } while ($row_group = mysqli_fetch_assoc($group)); ?>
       </tbody>

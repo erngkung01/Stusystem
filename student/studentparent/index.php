@@ -169,8 +169,13 @@ $page_active= 3;
 <h1 style="text-align:center;">ข้อมูลผู้ปกครองนักเรียน</h1>
 <h3 style="text-align:center;"><?php echo $row_studentdata['PrefixName']; ?> <?php echo $row_studentdata['student_name']; ?>  <?php echo $row_studentdata['student_surname']; ?></h3> <div style="text-align:right">
 <?php if ($totalRows_studentparent > 0) { // Show if recordset not empty ?>
+
+  <?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222){ ?>
 <a href="update.php?studentID=<?php echo $row_studentdata['studentID']; ?>" class="btn btn-warning">แก้ไขข้อมูลผู้ปกครองนักเรียน</a>
 <a href="../Studentdata/delete.php?studentID=<?php echo $row_studentdata['studentID']; ?>" class="btn btn-danger" onclick="return confirm('คุณแน่ใจที่จะลบข้อมูลนี้')">ลบข้อมูล</a>
+
+<?php } ?>
+
 </div>
 <br>
 

@@ -133,8 +133,12 @@ $page_active= 2;
 <?php if ($totalRows_studentaddress > 0) { // Show if recordset not empty ?>
   <div style="text-align:right">
     
+      <?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222){ ?>
     <a href="update.php?studentID=<?php echo $row_studentdata['studentID']; ?>" class="btn btn-warning">แก้ไขข้อมูลที่อยู่นักเรียน</a>
     <a href="../Studentdata/delete.php?studentID=<?php echo $row_studentdata['studentID']; ?>" class="btn btn-danger" onclick="return confirm('คุณแน่ใจที่จะลบข้อมูลนี้')">ลบข้อมูล</a>
+    
+    <?php } ?>
+    
   </div>
   <br>
   

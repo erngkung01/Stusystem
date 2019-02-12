@@ -3,7 +3,10 @@
     </div>
     <br>
     <div style="text-align:center;">
+      <?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222){ ?>
       <a href="<?php echo $web ?>/student/Studentdata/Uploadimg.php?studentID=<?php echo $row_studentdata['studentID']; ?>" class="btn btn-primary">แก้ไขรูปภาพ</a>
+      
+      <?php } ?>
     </div>
     <br>
     <div style="text-align:center;">

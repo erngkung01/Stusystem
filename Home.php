@@ -117,17 +117,22 @@ $totalPages_Recordset1 = ceil($totalRows_Recordset1/$maxRows_Recordset1)-1;
 <?php include("head.php"); echo "<br>"; ?>
 <!-------end head-------->
 <div class="container">
+  <?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222||$_SESSION['MM_UserGroup']==333){ ?>
 <div class="col-sm-4">
 <div class="panel panel-success">
       <div class="panel-heading"><h3><a href="student/index.php" style="color:#043D03;"><i class="glyphicon glyphicon-user"></i>  ระบบจัดการข้อมูลนักเรียน</a></h3></div>
       <div class="panel-body" style="text-align:right;"><a href="student/index.php" style="color:#043D03;">คลิกที่นี่</a></div>
     </div>
 </div>
+
+
 <div class="col-sm-4">
 <div class="panel panel-info">
       <div class="panel-heading"><h3><a href="Teacher/index.php" style="color:#070F90"><i class="glyphicon glyphicon-book"></i>  ระบบจัดการข้อมูลอาจารย์</a></h3></div>
       <div class="panel-body" style="text-align:right;"><a href="Teacher/index.php" style="color:#070F90;">คลิกที่นี่</a></div>
     </div>
+    
+    <?Php  } ?>
 
 </div>
 <div class="col-sm-4">

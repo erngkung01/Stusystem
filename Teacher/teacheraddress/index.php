@@ -138,7 +138,13 @@ $page_active=11;
   <div style="text-align:right">
     
     <a href="update.php?TeacherID=<?php echo $row_teacher['TeacherID']; ?>" class="btn btn-warning">แก้ไขข้อมูลที่อยู่อาจารย์</a>
+    
+    <?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222){ ?>
+    
     <a href="delete.php?TeacherID=<?php echo $row_teacher['TeacherID']; ?>" class="btn btn-danger" onclick="return confirm('คุณแน่ใจที่จะลบข้อมูลนี้')">ลบข้อมูล</a>
+    
+    <?php  } ?>
+    
   </div>
   <br>
   
