@@ -458,7 +458,9 @@ do {
         <th>ชื่อ</th>
         <th>นามสกุล</th>
         <th>จัดการข้อมูล</th>
+          <?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222){ ?>
         <th>ลบ</th>
+        <?php  } ?>
         </tr>
       </thead>
     <tbody>
@@ -469,7 +471,11 @@ do {
         <td><?php echo $row_teacher['PrefixName']; ?><?php echo $row_teacher['name']; ?></td>
         <td><?php echo $row_teacher['surname']; ?></td>
         <td><a href="data.php?TeacherID=<?php echo $row_teacher['TeacherID']; ?>" class="btn btn-info">จัดการข้อมูล</a></td>
+          <?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222){ ?>
         <td><a href="delete.php?TeacherID=<?php echo $row_teacher['TeacherID']; ?>" class="btn btn-danger"onclick="return confirm('คุณแน่ใจที่จะลบข้อมูลนี้')">ลบ</a></td>
+        
+        <?php } ?>
+        
         </tr>
       <?php } while ($row_teacher = mysqli_fetch_assoc($teacher)); ?>
       </tbody>
