@@ -569,7 +569,10 @@ do {
   <?php } // Show if recordset not empty ?>
    </div>
    <div class="col-sm-12"></div>
-  <a href="Studentdata/insert.php" class="btn btn-success">เพิ่มข้อมูลนักเรียน</a><br>
+   <?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222){ ?>
+  <a href="Studentdata/insert.php" class="btn btn-success">เพิ่มข้อมูลนักเรียน</a>
+  <?php } ?>
+  <br>
   <?php if ($totalRows_Student > 0) { // Show if recordset not empty ?>
    
     <table class="table table-hover">
@@ -579,7 +582,10 @@ do {
         <th>ชื่อ</th>
         <th>นามสกุล</th>
         <th>จัดการข้อมูล</th>
+        <?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222){ ?>
         <th>ลบ</th>
+        
+        <?php  } ?>
         
         </tr>
       </thead>
@@ -590,7 +596,10 @@ do {
         <td><?php echo $row_Student['PrefixName']; ?><?php echo $row_Student['student_name']; ?></td>
         <td><?php echo $row_Student['student_surname']; ?></td>
          <td><a class="btn btn-info" href="Studentdata/index.php?studentID=<?php echo $row_Student['studentID']; ?>">จัดการข้อมูล</a></td>
+         <?php if($_SESSION['MM_UserGroup']==111||$_SESSION['MM_UserGroup']==222){ ?>
          <td><a href="Studentdata/delete.php?studentID=<?php echo $row_Student['studentID']; ?>" class="btn btn-danger" onclick="return confirm('คุณแน่ใจที่จะลบข้อมูลนี้')">ลบ</a></td>
+         
+         <?php } ?>
          
         </tr>
         <?php } while ($row_Student = mysqli_fetch_assoc($Student)); ?>
