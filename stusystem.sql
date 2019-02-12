@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 12, 2019 at 03:51 PM
+-- Generation Time: Feb 12, 2019 at 03:54 PM
 -- Server version: 5.7.17-log
 -- PHP Version: 7.1.1
 
@@ -11152,8 +11152,8 @@ CREATE TABLE `tbl_usertype` (
 INSERT INTO `tbl_usertype` (`usertypeid`, `usertype_name`) VALUES
 ('111', 'ผู้ดูแลระบบ'),
 ('222', 'เจ้าหน้าที่'),
-('333', 'ผู้บริหาร'),
-('444', 'ครู/อาจารย์');
+('333', 'ครู/อาจารย์'),
+('444', 'ผู้บริหาร');
 
 --
 -- Indexes for dumped tables
