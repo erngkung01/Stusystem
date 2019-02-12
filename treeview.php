@@ -45,6 +45,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 ?>
 <!doctype html>
 <head>
+<title>แผนผังระบบบริหารจัดการข้อมูลนักเรียนโรงเรียนอินทารามวิทยา</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -86,6 +87,10 @@ ul, #myUL {
   display: block;
 }
 </style>
+
+<link rel="stylesheet" href="css/bootstrap.css">
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
 
 </head>
 <body>
