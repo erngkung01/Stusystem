@@ -147,7 +147,7 @@ $queryString_group = sprintf("&totalRows_group=%d%s", $totalRows_group, $querySt
    <form action="search.php" method="get" id="search">
 
     <div class="col-sm-3"><select name="classlevel" id="classlevel" class="form-control">
-      <option value="" >คำนำหน้าชื่อ</option>
+      <option value="" >ระดับชั้น</option>
       <?php
 do {  
 ?>

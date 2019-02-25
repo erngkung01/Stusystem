@@ -141,7 +141,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 <form ACTION="<?php echo $loginFormAction; ?>" id="login" name="login" method="POST"  class="form-signin">
   <img class="mb-4" src="img/logo.jpg" alt="" width="250" height="250">
   <p>
-  <h1 class="h3 mb-3 font-weight-normal">ระบบบริหารจัดการข้อมูลโรงเรียนอินทารามวิทยา</h1> <br>
+  <h1 class="h3 mb-3 font-weight-normal">ระบบบริหารจัดการข้อมูลนักเรียนโรงเรียนอินทารามวิทยา</h1> <br>
     <label for="username">Username:</label>
     <input name="username" type="text" autofocus required class="form-control" id="username" placeholder="ใส่ Username" title="Username">
   </p>
