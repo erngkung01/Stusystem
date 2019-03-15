@@ -280,18 +280,7 @@ do {
   <!-- แสดงตัวเลือก ระดับชั้น -->
             <select name="classlevelid"  id="classlevelid" class="form-control">
               <option value="">-- กรุณาเลือกระดับชั้น --</option>
-              <?php
-do {  
-?>
-              <option value="<?php echo $row_classlevel['classlevelid']?>"><?php echo $row_classlevel['classlevelname']?></option>
-              <?php
-} while ($row_classlevel = mysqli_fetch_assoc($classlevel));
-  $rows = mysqli_num_rows($classlevel);
-  if($rows > 0) {
-      mysqli_data_seek($classlevel, 0);
-	  $row_classlevel = mysqli_fetch_assoc($classlevel);
-  }
-?>
+              
           </select>
   </div>
   <div class="col-sm-3">
